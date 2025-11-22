@@ -1,26 +1,201 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*  Theme Variables */
+@theme {
+    /* theme */
+    --theme-backdrop: #020618;
+    --link-foreground: #ffa1ad;
+    /* Colors */
+    --color-slate-950: #020618;
+    --color-slate-900: #0f172b;
+    --color-slate-800: #1d293d;
+    --color-slate-700: #1e293b;
+    --color-slate-600: #314158;
+    --color-slate-500: #62748e;
+    --color-slate-400: #90a1b9;
+    --color-slate-300: #cad5e2;
+    --color-slate-200: #e2e8f0;
+
+    --color-indigo-500: #615fff;
+    --color-indigo-400: #818cf8;
+    --color-indigo-300: #a3b3ff;
+
+    --color-teal-900: #134e4a;
+    --color-teal-800: #115e59;
+    --color-teal-600: #0d9488;
+    --color-teal-500: #14b8a6;
+    --color-teal-400: #00d5be;
+    --color-teal-300: #46ecd5;
+
+    --color-orange-400: #ffb86a;
+
+    --color-pink-500: #ff637e;
+    --color-pink-400: #f472b6;
+    --color-pink-300: #ffa1ad;
+
+    --color-purple-300: #c27aff;
+
+    --color-amber-300: #fcd34d;
+
+    --color-blue-400: #60a5fa;
+
+    /* Font Family */
+    --font-mono: 'Fira Code', ui-monospace, monospace;
+
+    /* Font Sizes */
+    --font-size-sm: 0.875rem; /* 14px */
+    --font-size-base: 1rem; /* 16px */
+    --font-size-lg: 1.125rem; /* 18px */
+    --font-size-xl: 1.25rem; /* 20px */
+    --font-size-2xl: 1.5rem; /* 24px */
+    --font-size-3xl: 1.875rem; /* 30px */
+    --font-size-4xl: 2.25rem; /* 36px */
+    --font-size-6xl: 3.75rem; /* 60px */
+
+    /* Line Heights */
+    --leading-5: 1.25rem; /* 20px */
+    --leading-6: 1.5rem; /* 24px */
+    --leading-7: 1.75rem; /* 27px */
+    --leading-tight: 1.1;
+    --leading-relaxed: 1.5;
+
+    /* Border Radius */
+    --radius-sm: 0.125rem; /* 2px */
+    --radius: 0.5rem; /* 8px */
+    --radius-lg: 1rem; /* 16px */
+    --radius-xl: 1.5rem; /* 24px */
+    --radius-full: 9999px;
+
+    /* Spacing */
+    --spacing-0-5: 0.125rem; /* 2px */
+    --spacing-1: 0.25rem; /* 4px */
+    --spacing-2: 0.5rem; /* 8px */
+    --spacing-3: 0.75rem; /* 12px */
+    --spacing-4: 1rem; /* 16px */
+    --spacing-5: 1.25rem; /* 20px */
+    --spacing-6: 1.5rem; /* 24px */
+    --spacing-8: 2rem; /* 32px */
+    --spacing-10: 2.5rem; /* 40px */
+    --spacing-12: 3rem; /* 48px */
+    --spacing-14: 3.5rem; /* 56px */
+    --spacing-16: 4rem; /* 64px */
+    --spacing-20: 5rem; /* 80px */
+    --spacing-24: 6rem; /* 96px */
+    --spacing-32: 8rem; /* 128px */
+    --spacing-36: 9rem; /* 144px */
+    --spacing-40: 10rem; /* 160px */
+
+    /* Shadows */
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-inner: inset 0 6px 8px 0 rgb(0 0 0 / 0.05);
+
+    /* Transitions */
+    --transition-colors: color 0.15s ease, background-color 0.15s ease,
+        border-color 0.15s ease;
+    --transition-all: all 0.15s ease;
+
+    /* Blur */
+    --blur-sm: 4px;
+    --blur-md: 12px;
+    --blur-lg: 16px;
+    --blur-xl: 24px;
+    --blur-3xl: 64px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer base {
+    * {
+        @apply border-slate-600;
+    }
+
+    body {
+        @apply bg-slate-900 text-white font-mono antialiased;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-slate-800;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-slate-600 rounded;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-slate-500;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@layer utilities {
+    /* Custom Gradients */
+    .bg-gradient-radial {
+        background: radial-gradient(circle, var(--tw-gradient-stops));
+    }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    /* Backdrop Blur Custom */
+    .backdrop-blur-custom {
+        backdrop-filter: blur(32px);
+        -webkit-backdrop-filter: blur(32px);
+    }
+
+    /* Text Gradient */
+    .text-gradient {
+        @apply bg-clip-text text-transparent;
+    }
+
+    .glass {
+        @apply bg-white/5 border border-slate-600;
+        backdrop-filter: blur(32px);
+        -webkit-backdrop-filter: blur(32px);
+    }
+    /* Line clamp for long text */
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* Smooth grid transitions */
+    .grid-transition {
+        transition: grid-template-columns 0.3s ease;
+    }
+
+    /* Hide Scrollbar */
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    /* Better code scrollbar */
+    .code-scroll::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    .code-scroll::-webkit-scrollbar-thumb {
+        @apply bg-slate-600 rounded;
+    }
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
 }
