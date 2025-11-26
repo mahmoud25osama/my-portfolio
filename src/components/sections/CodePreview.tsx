@@ -1,47 +1,51 @@
+'use client'
+
+import { customStyle, customTheme } from '@/lib/constants'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-const CodePreview: React.FC<{
-    formData: { name: string; email: string; message: string }
-}> = ({ formData }) => {
-    const lineNumbers = Array.from({ length: 12 }, (_, i) => i + 1).join('\n')
+interface CodePreviewProps {
+    formData: {
+        name: string
+        email: string
+        message: string
+    }
+}
 
+const CodePreview: React.FC<CodePreviewProps> = ({ formData }) => {
     const codeContent = `const button = document.querySelector('#sendBtn');
 
 const message = {
-name: "${formData.name || ''}",
-email: "${formData.email || ''}",
-message: "${formData.message || ''}",
-date: "${new Date().toISOString().split('T')[0]}"
+  name: "${formData.name || ''}",
+  email: "${formData.email || ''}",
+  message: "${formData.message || ''}",
+  date: "${new Date().toISOString().split('T')[0]}"
 }
 
 button.addEventListener('click', () => {
-    form.send(message);
-});
-        `
+  form.send(message);
+});`
 
     return (
-        <div className=" border-r border-slate-600 flex px-5 py-6 gap-5">
-            <div className="w-6 ">
-                <pre className="text-slate-400 text-lg text-right leading-7">
-                    {lineNumbers}
-                </pre>
-            </div>
-            <div className="flex-1">
-                {/* <pre className="text-purple-300 text-md leading-7 ">
-                </pre> */}
+        <div className="w-full border-r border-slate-600 flex px-5 py-6 gap-5">
+            <div className="font-mono text-base md:text-2xl leading-7">
                 <SyntaxHighlighter
-                    language="typescript"
-                    style={oneDark}
-                    customStyle={{
-                        padding: '0px',
-                        margin: '0px',
-                        fontSize: '16px',
-                        background: 'transparent',
+                    language="javascript"
+                    style={customTheme}
+                    customStyle={customStyle}
+                    showLineNumbers={true}
+                    lineNumberStyle={{
+                        color: '#607B96',
+                        paddingRight: '1.5rem',
+                        userSelect: 'none',
+                        minWidth: '2.5em',
+                        textAlign: 'right',
                     }}
-                    codeTagProps={{
+                    wrapLines={true}
+                    lineProps={{
                         style: {
-                            background: 'transparent',
+                            wordBreak: 'break-word',
+                            whiteSpace: 'pre-wrap',
                         },
                     }}
                 >
@@ -51,4 +55,5 @@ button.addEventListener('click', () => {
         </div>
     )
 }
+
 export default CodePreview

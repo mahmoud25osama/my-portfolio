@@ -2,6 +2,7 @@ import { FaFileAlt } from 'react-icons/fa'
 import { SnakePosition, TabType } from './types'
 import { FaPhone } from 'react-icons/fa6'
 import { IoMdMail } from 'react-icons/io'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export const GRID_SIZE = 15
 export const CELL_SIZE = 16
@@ -184,8 +185,7 @@ export const codeSnippets = [
             details: '1 file',
             stars: '3 stars',
         },
-        code: `
-function initializeModelChunk(chunk){
+        code: `function initializeModelChunk(chunk){
   const value = parseModel(chunk._response,chunk._value);
   const initializedChunk = (chunk);
   initializedChunk._status = INITIALIZED;
@@ -203,8 +203,7 @@ function initializeModelChunk(chunk){
             details: '1 file',
             stars: '5 stars',
         },
-        code: `
-export function parseModelTuple(
+        code: `export function parseModelTuple(
   response: Response,
   value: {+[key: string]: JSONValue},): any {
   const tuple: [mixed, mixed, mixed, mixed] = (value:any);`,
@@ -234,3 +233,34 @@ export const projects = [
         tech: 'react',
     },
 ]
+
+export const customStyle = {
+    backgroundColor: 'transparent',
+    padding: '0',
+    margin: '0',
+    fontSize: 'inherit',
+    lineHeight: 'inherit',
+}
+
+export const customTheme = {
+    ...vscDarkPlus,
+    'code[class*="language-"]': {
+        ...vscDarkPlus['code[class*="language-"]'],
+        color: '#607B96',
+        fontFamily: 'monospace',
+    },
+    'pre[class*="language-"]': {
+        ...vscDarkPlus['pre[class*="language-"]'],
+        backgroundColor: 'transparent',
+        padding: '0',
+        margin: '0',
+    },
+    keyword: { color: '#C792EA' },
+    function: { color: '#E06C75' },
+    string: { color: '#43D9AD' },
+    comment: { color: '#607B96' },
+    operator: { color: '#607B96' },
+    punctuation: { color: '#607B96' },
+    constant: { color: '#E06C75' },
+    'class-name': { color: '#E06C75' },
+}

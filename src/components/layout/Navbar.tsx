@@ -21,7 +21,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className="flex items-center gap-[119px]">
                     <div className=" px-6 md:px-10 py-4 h-full flex items-center">
-                        <span className="text-slate-400 text-base font-normal">
+                        <span className="text-slate-400 text-lg font-normal">
                             Mahmoud-Osama
                         </span>
                     </div>
