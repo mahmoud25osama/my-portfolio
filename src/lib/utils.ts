@@ -35,3 +35,4 @@ const checkCollision = (
 }
 
 export { generateFood, checkCollision }
+// ==================== END SNAKE GAME LOGIC ====================

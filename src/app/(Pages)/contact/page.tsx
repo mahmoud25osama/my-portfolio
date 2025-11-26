@@ -19,7 +19,7 @@ const Contact = () => {
         e.preventDefault()
 
         if (!formData.name || !formData.email || !formData.message) {
-            setError('Please fill in all fields.') // رسالة الخطأ
+            setError('Please fill in all fields.')
             return
         }
 

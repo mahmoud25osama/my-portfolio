@@ -2,17 +2,17 @@
 'use client'
 
 import React, { useState } from 'react'
+
 import {
-    ChevronDown,
-    Github,
-    Linkedin,
-    Mail,
-    ExternalLink,
-    Code,
-    Briefcase,
-    User,
-    MessageCircle,
-} from 'lucide-react'
+    FaChevronDown,
+    FaCode,
+    FaGithub,
+    FaGithubAlt,
+    FaLinkedin,
+    FaMessage,
+    FaUser,
+} from 'react-icons/fa6'
+import { FaExternalLinkAlt, FaMailBulk, FaMailchimp } from 'react-icons/fa'
 
 interface Project {
     id: number
@@ -173,14 +173,14 @@ const Portfolio: React.FC = () => {
                             href="#"
                             className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-full transition-colors flex items-center space-x-2"
                         >
-                            <Mail size={20} />
+                            <FaMailchimp size={20} />
                             <span>Get In Touch</span>
                         </a>
                         <a
                             href="#"
                             className="border border-gray-600 hover:border-gray-400 px-8 py-3 rounded-full transition-colors flex items-center space-x-2"
                         >
-                            <Github size={20} />
+                            <FaGithub size={20} />
                             <span>View GitHub</span>
                         </a>
                     </div>
@@ -188,7 +188,7 @@ const Portfolio: React.FC = () => {
                         onClick={() => scrollToSection('about')}
                         className="cursor-pointer animate-bounce"
                     >
-                        <ChevronDown
+                        <FaChevronDown
                             size={32}
                             className="mx-auto text-gray-400"
                         />
@@ -222,19 +222,19 @@ const Portfolio: React.FC = () => {
                                     href="#"
                                     className="text-blue-400 hover:text-blue-300 transition-colors"
                                 >
-                                    <Linkedin size={24} />
+                                    <FaLinkedin size={24} />
                                 </a>
                                 <a
                                     href="#"
                                     className="text-blue-400 hover:text-blue-300 transition-colors"
                                 >
-                                    <Github size={24} />
+                                    <FaGithubAlt size={24} />
                                 </a>
                                 <a
                                     href="#"
                                     className="text-blue-400 hover:text-blue-300 transition-colors"
                                 >
-                                    <Mail size={24} />
+                                    <FaMailBulk size={24} />
                                 </a>
                             </div>
                         </div>
@@ -316,7 +316,10 @@ const Portfolio: React.FC = () => {
                                 className="bg-white/5 backdrop-blur-md rounded-xl overflow-hidden border border-white/10 hover:border-white/20 transition-all group hover:transform hover:scale-105"
                             >
                                 <div className="h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                                    <Code size={48} className="text-blue-400" />
+                                    <FaCode
+                                        size={48}
+                                        className="text-blue-400"
+                                    />
                                 </div>
                                 <div className="p-6">
                                     <h3 className="text-xl font-semibold mb-3">
@@ -342,13 +345,13 @@ const Portfolio: React.FC = () => {
                                             href={project.githubUrl}
                                             className="text-gray-400 hover:text-white transition-colors"
                                         >
-                                            <Github size={20} />
+                                            <FaGithub size={20} />
                                         </a>
                                         <a
                                             href={project.liveUrl}
                                             className="text-gray-400 hover:text-white transition-colors"
                                         >
-                                            <ExternalLink size={20} />
+                                            <FaExternalLinkAlt size={20} />
                                         </a>
                                     </div>
                                 </div>
@@ -370,7 +373,7 @@ const Portfolio: React.FC = () => {
                     </p>
                     <div className="grid md:grid-cols-3 gap-8 mb-12">
                         <div className="bg-white/5 backdrop-blur-md rounded-xl p-8 border border-white/10">
-                            <Mail
+                            <FaMailchimp
                                 size={32}
                                 className="mx-auto mb-4 text-blue-400"
                             />
@@ -382,7 +385,7 @@ const Portfolio: React.FC = () => {
                             </p>
                         </div>
                         <div className="bg-white/5 backdrop-blur-md rounded-xl p-8 border border-white/10">
-                            <MessageCircle
+                            <FaMessage
                                 size={32}
                                 className="mx-auto mb-4 text-purple-400"
                             />
@@ -392,7 +395,7 @@ const Portfolio: React.FC = () => {
                             <p className="text-gray-300">+1 (555) 123-4567</p>
                         </div>
                         <div className="bg-white/5 backdrop-blur-md rounded-xl p-8 border border-white/10">
-                            <User
+                            <FaUser
                                 size={32}
                                 className="mx-auto mb-4 text-pink-400"
                             />
