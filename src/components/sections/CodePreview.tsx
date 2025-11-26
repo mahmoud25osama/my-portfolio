@@ -1,27 +1,52 @@
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+
 const CodePreview: React.FC<{
     formData: { name: string; email: string; message: string }
 }> = ({ formData }) => {
     const lineNumbers = Array.from({ length: 12 }, (_, i) => i + 1).join('\n')
 
     const codeContent = `const button = document.querySelector('#sendBtn');
-        const message = {
-        name: "${formData.name || ''}",
-        email: "${formData.email || ''}",
-        message: "${formData.message || ''}",
-        date: "${new Date().toISOString().split('T')[0]}"
-        }`
+
+const message = {
+name: "${formData.name || ''}",
+email: "${formData.email || ''}",
+message: "${formData.message || ''}",
+date: "${new Date().toISOString().split('T')[0]}"
+}
+
+button.addEventListener('click', () => {
+    form.send(message);
+});
+        `
 
     return (
         <div className=" border-r border-slate-600 flex px-5 py-6 gap-5">
-            <div className="w-6">
+            <div className="w-6 ">
                 <pre className="text-slate-400 text-lg text-right leading-7">
                     {lineNumbers}
                 </pre>
             </div>
             <div className="flex-1">
-                <pre className="text-purple-300 text-md leading-7 ">
+                {/* <pre className="text-purple-300 text-md leading-7 ">
+                </pre> */}
+                <SyntaxHighlighter
+                    language="typescript"
+                    style={oneDark}
+                    customStyle={{
+                        padding: '0px',
+                        margin: '0px',
+                        fontSize: '16px',
+                        background: 'transparent',
+                    }}
+                    codeTagProps={{
+                        style: {
+                            background: 'transparent',
+                        },
+                    }}
+                >
                     {codeContent}
-                </pre>
+                </SyntaxHighlighter>
             </div>
         </div>
     )

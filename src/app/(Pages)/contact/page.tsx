@@ -11,12 +11,43 @@ const Contact = () => {
         email: '',
         message: '',
     })
+    const [isSend, setIsSend] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState('')
 
-    const submitForm = (e: React.FormEvent) => {
+    const submitForm = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('Form submitted:', formData)
-        alert('Message sent successfully!')
+
+        if (!formData.name || !formData.email || !formData.message) {
+            setError('Please fill in all fields.') // رسالة الخطأ
+            return
+        }
+
+        setError('')
+        setIsLoading(true)
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            })
+
+            const data = await res.json()
+
+            if (data.success) {
+                setIsSend(true)
+                setFormData({ name: '', email: '', message: '' })
+            } else {
+                setError('Failed to send message.')
+            }
+        } catch (err) {
+            setError('Error sending message.')
+        } finally {
+            setIsLoading(false)
+        }
     }
+
     return (
         <div className=" flex h-[calc(100vh-7rem)]">
             <ContactSidebar />
@@ -32,11 +63,32 @@ const Contact = () => {
                 </div>
 
                 <div className="flex-1 flex">
-                    <ContactForm
-                        formData={formData}
-                        setFormData={setFormData}
-                        submitForm={submitForm}
-                    />
+                    {isSend ? (
+                        <div className="flex flex-col items-center justify-center gap-6 border-r border-slate-600 px-10">
+                            <h2 className="text-2xl font-semibold text-teal-400">
+                                Thank you! 🤘
+                            </h2>
+                            <p className="text-slate-400 text-center">
+                                Your message has been accepted. You will receive
+                                answer soon!
+                            </p>
+                            <button
+                                onClick={() => setIsSend(false)}
+                                className="text-sm px-3 py-2 h-10 bg-orange-400 text-teal-950 rounded-[8px]  cursor-pointer hover:bg-orange-500 transition-colors"
+                            >
+                                send-new-message
+                            </button>
+                        </div>
+                    ) : (
+                        <ContactForm
+                            formData={formData}
+                            setFormData={setFormData}
+                            submitForm={submitForm}
+                            isLoading={isLoading}
+                            error={error}
+                            setError={setError}
+                        />
+                    )}
 
                     <CodePreview formData={formData} />
 

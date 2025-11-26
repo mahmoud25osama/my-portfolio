@@ -4,12 +4,16 @@ const ContactForm: React.FC<{
         React.SetStateAction<{ name: string; email: string; message: string }>
     >
     submitForm: (e: React.FormEvent) => void
-}> = ({ formData, setFormData, submitForm }) => {
+    isLoading: boolean
+    error: string
+    setError: React.Dispatch<React.SetStateAction<string>>
+}> = ({ formData, setFormData, submitForm, isLoading, error, setError }) => {
     const handleInputChange = (field: string, value: string) => {
         setFormData((prev) => ({
             ...prev,
             [field]: value,
         }))
+        if (error) setError('')
     }
 
     return (
@@ -57,12 +61,14 @@ const ContactForm: React.FC<{
                         placeholder=""
                     />
                 </div>
+                {error && <p className="text-red-500 text-sm">{error}</p>}
 
                 <button
                     type="submit"
-                    className="w-[142px] h-10 bg-slate-600 text-slate-500 px-3 py-2 rounded-lg text-sm hover:bg-slate-500 hover:text-white transition-colors"
+                    className="w-[142px] text-sm px-3 py-2 h-10 bg-orange-400 text-teal-950 rounded-[8px] cursor-pointer hover:bg-orange-500 transition-colors"
+                    disabled={isLoading}
                 >
-                    submit-message
+                    {isLoading ? 'Sending...' : 'submit-message'}
                 </button>
             </form>
         </div>
