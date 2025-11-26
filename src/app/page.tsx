@@ -41,12 +41,12 @@ const HomePage = () => {
                             <span className="text-blue-400">githubLink</span>
                             <span className="text-slate-400"> = </span>
                             <a
-                                href="https://github.com/username"
+                                href="https://github.com/mahmoud25osama"
                                 className="text-amber-300 hover:underline"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                &quot;https://github.com/username/snake-game&quot;
+                                &quot;https://github.com/mahmoud25osama&quot;
                             </a>
                         </p>
                     </div>
