@@ -1,5 +1,5 @@
+import { contactItems } from '@/lib/constants'
 import { useState } from 'react'
-import { CiMail } from 'react-icons/ci'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import { FaChevronDown, FaPhone } from 'react-icons/fa6'
 import { IoMdMail } from 'react-icons/io'
@@ -9,16 +9,18 @@ const ContactSidebar = () => {
         contacts: true,
         'find-me': true,
     })
-    const contactItems = [
-        { name: 'mahmoud4h5@gmail.com', icon: IoMdMail },
-        { name: '+201016074277', icon: FaPhone },
-    ]
 
     const socialLinks = [
-        { name: 'LinkedIn profile', icon: FaExternalLinkAlt, active: true },
-        { name: 'Facebook profile', icon: FaExternalLinkAlt, active: false },
-        { name: 'Twitter account', icon: FaExternalLinkAlt, active: false },
-        { name: 'Instagram account', icon: FaExternalLinkAlt, active: false },
+        {
+            name: 'LinkedIn profile',
+            link: 'https://www.linkedin.com/in/ma252002/',
+        },
+        {
+            name: 'Facebook profile',
+            link: 'https://www.facebook.com/mahmoud.osama.550367',
+        },
+        { name: 'WhatsApp account', link: 'https://wa.me/+201016074277' },
+        { name: 'GitHub account', link: 'https://github.com/mahmoud25osama' },
     ]
     const toggleSection = (sectionKey: SectionKey) => {
         setExpandedSections((prev) => ({
@@ -27,7 +29,7 @@ const ContactSidebar = () => {
         }))
     }
     return (
-        <div className=" h-full flex flex-col border-r border-slate-600">
+        <div className="hidden h-full lg:flex flex-col border-r border-slate-600">
             <div className="flex flex-col">
                 <div
                     className="h-12 border-b border-slate-600 flex items-center px-6 gap-3 cursor-pointer hover:bg-slate-800/30"
@@ -73,18 +75,19 @@ const ContactSidebar = () => {
                         {socialLinks.map((link, index) => (
                             <div
                                 key={index}
-                                className="flex items-center px-3 gap-2 hover:bg-slate-800/30 cursor-pointer py-1"
+                                onClick={() => {
+                                    if (link.link) {
+                                        window.open(link.link, '_blank')
+                                    }
+                                }}
+                                className="flex group items-center px-3 gap-2 hover:bg-slate-800/30 cursor-pointer py-1"
                             >
-                                <link.icon
+                                <FaExternalLinkAlt
                                     size={16}
                                     className="text-slate-500"
                                 />
                                 <span
-                                    className={`text-base ${
-                                        link.active
-                                            ? 'text-white'
-                                            : 'text-slate-400'
-                                    }`}
+                                    className={`text-base group-hover:text-white text-slate-400`}
                                 >
                                     {link.name}
                                 </span>

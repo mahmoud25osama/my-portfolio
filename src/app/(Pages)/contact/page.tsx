@@ -52,17 +52,12 @@ const Contact = () => {
         <div className=" flex h-[calc(100vh-7rem)]">
             <ContactSidebar />
 
-            <div className="flex-1 flex flex-col">
-                <div className="h-12 border-b border-slate-600 flex">
-                    <div className="w-[242px] h-full border-r border-slate-600 flex items-center px-6 gap-3">
-                        <span className="text-slate-400 text-base">
-                            personal-info
-                        </span>
-                        <FaX size={16} className="text-slate-400" />
-                    </div>
+            <div className="flex-1 flex flex-col lg:py-0 py-6 ">
+                <div className="hidden h-12 border-b border-slate-600 lg:flex">
+                    <div className="w-[242px] h-full flex items-center px-6 gap-3"></div>
                 </div>
 
-                <div className="flex-1 flex">
+                <div className="flex-1 flex flex-col lg:flex-row overflow-auto">
                     {isSend ? (
                         <div className="flex flex-col items-center justify-center gap-6 border-r border-slate-600 px-10">
                             <h2 className="text-2xl font-semibold text-teal-400">

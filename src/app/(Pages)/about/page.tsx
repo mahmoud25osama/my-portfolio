@@ -3,6 +3,7 @@ import {
     aboutContent,
     codeSnippets,
     contactItems,
+    customTheme,
     personalInfoItems,
 } from '@/lib/constants'
 import { ItemKey, PathType, SectionKey } from '@/lib/types'
@@ -23,7 +24,6 @@ import {
     FaX,
 } from 'react-icons/fa6'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 const About = () => {
     const [expandedSections, setExpandedSections] = useState({
@@ -67,12 +67,11 @@ const About = () => {
                     onClick={() => setIsMobileSidebarOpen(false)}
                 />
             )}
-
             {/* Sidebar */}
             <div
                 className={`
                     fixed md:static h-full left-0 z-40 
-                    w-[280px] md:w-[25%] flex-shrink-0
+                    w-[280px] md:w-[24.95%] flex-shrink-0
                     bg-slate-900 border-r border-slate-600
                     transform transition-transform duration-300 ease-in-out
                     ${
@@ -217,7 +216,19 @@ const About = () => {
                                                                 size={14}
                                                                 className="text-slate-500"
                                                             />
-                                                            <span className="text-slate-400 text-sm">
+                                                            <span
+                                                                className={`text-slate-400 text-sm ${
+                                                                    activePath ===
+                                                                    `${
+                                                                        item.title
+                                                                    }/${file.name.replace(
+                                                                        '.txt',
+                                                                        ''
+                                                                    )}`
+                                                                        ? 'text-white '
+                                                                        : ''
+                                                                }`}
+                                                            >
                                                                 {file.name}
                                                             </span>
                                                         </div>
@@ -304,95 +315,33 @@ const About = () => {
                 {/* Content Grid */}
                 <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
                     {/* Code Editor */}
-                    <div className="flex-1 flex px-3 lg:px-3 py-3 gap-3 lg:gap-4 overflow-auto">
-                        <div className="flex-shrink-0 w-6 lg:w-7">
-                            {/* aboutText */}
-                            <pre className="text-slate-400 text-xs lg:text-sm text-right leading-6 lg:leading-7">
-                                {Array.from(
-                                    { length: 15 },
-                                    (_, i) => i + 1
-                                ).join('\n')}
-                            </pre>
-                        </div>
-                        <div className="flex-1 overflow-auto">
-                            <pre className="text-green-400 text-xs lg:text-sm leading-6 lg:leading-7 whitespace-pre-wrap break-words">
+                    <div className="flex-1 flex  p-3 lg:p-4   overflow-auto">
+                        <div className="">
+                            <SyntaxHighlighter
+                                language="javascript"
+                                style={customTheme}
+                                customStyle={{
+                                    background: 'transparent',
+                                    padding: 'inherit',
+                                    fontSize: '1.2rem',
+                                    width: '100%',
+                                    maxWidth: '100%',
+                                    overflowX: 'hidden',
+                                    whiteSpace: 'pre-wrap',
+                                    wordBreak: 'break-word',
+                                }}
+                                wrapLines={true}
+                                wrapLongLines={true}
+                                showLineNumbers
+                                codeTagProps={{
+                                    style: {
+                                        background: 'transparent',
+                                    },
+                                }}
+                            >
                                 {aboutContent[activePath] ||
                                     '/** Select a file from the sidebar */'}
-                            </pre>
-                        </div>
-                    </div>
-
-                    {/* Code Preview - Hidden on mobile, show on lg+ */}
-                    <div className="hidden lg:flex w-[350px] xl:w-[450px] border-l border-slate-600 p-3 flex-col gap-4 overflow-visible flex-shrink-0">
-                        <h3 className="text-slate-400 text-sm">
-                            // Code snippet showcase:
-                        </h3>
-
-                        <div className="flex flex-col gap-4">
-                            {codeSnippets.map((snippet) => (
-                                <div
-                                    key={snippet.id}
-                                    className="flex flex-col gap-3"
-                                >
-                                    {/* User Info */}
-                                    <div className="flex justify-between items-start gap-2">
-                                        <div className="flex items-center gap-2 flex-1 min-w-0">
-                                            <div className="w-8 h-8 bg-slate-600 rounded-full flex-shrink-0" />
-                                            <div className="flex flex-col min-w-0">
-                                                <span className="text-indigo-500 text-xs font-bold truncate">
-                                                    {snippet.user.username}
-                                                </span>
-                                                <span className="text-slate-400 text-xs truncate">
-                                                    {snippet.user.timestamp}
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex gap-3 flex-shrink-0">
-                                            <div className="flex items-center gap-1">
-                                                <FaEye
-                                                    size={14}
-                                                    className="text-white"
-                                                />
-                                                <span className="text-white text-xs">
-                                                    {snippet.actions.details}
-                                                </span>
-                                            </div>
-                                            <div className="flex items-center gap-1">
-                                                <FaStar
-                                                    size={14}
-                                                    className="text-slate-400"
-                                                />
-                                                <span className="text-slate-400 text-xs">
-                                                    {snippet.actions.stars}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Code Block */}
-                                    <div>
-                                        <SyntaxHighlighter
-                                            language="typescript"
-                                            style={oneDark}
-                                            customStyle={{
-                                                overflow: 'hidden',
-                                                borderRadius: '12px',
-                                                padding: '18px',
-                                                fontSize: '11.6px',
-                                                background: '#020618',
-                                            }}
-                                            codeTagProps={{
-                                                style: {
-                                                    background: 'transparent',
-                                                },
-                                            }}
-                                        >
-                                            {snippet.code}
-                                        </SyntaxHighlighter>
-                                    </div>
-                                </div>
-                            ))}
+                            </SyntaxHighlighter>
                         </div>
                     </div>
 

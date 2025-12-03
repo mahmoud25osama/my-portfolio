@@ -20,7 +20,7 @@ const Navbar = () => {
             <header className="h-14 border-b border-slate-600 flex justify-between items-center relative z-50 bg-slate-900">
                 {/* Logo */}
                 <div className="flex items-center gap-[119px]">
-                    <div className=" px-6 md:px-10 py-4 h-full flex items-center">
+                    <div className=" px-6 md:px-8 py-4 h-full flex items-center ">
                         <span className="text-slate-400 text-lg font-normal">
                             Mahmoud-Osama
                         </span>

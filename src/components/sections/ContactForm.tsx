@@ -19,7 +19,7 @@ const ContactForm: React.FC<{
     return (
         <div className="  border-r border-slate-600 flex flex-col items-center justify-center px-10">
             <form
-                className="w-[340px] flex flex-col gap-6"
+                className="lg:w-[340px] flex flex-col gap-6"
                 onSubmit={submitForm}
             >
                 <div className="flex flex-col gap-2">
