@@ -1,7 +1,6 @@
 'use client'
 import {
     aboutContent,
-    codeSnippets,
     contactItems,
     customTheme,
     personalInfoItems,
