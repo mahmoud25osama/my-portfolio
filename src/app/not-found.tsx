@@ -1,6 +1,6 @@
 'use client'
 
-import { customStyle, customTheme } from '@/lib/constants'
+import { customTheme } from '@/lib/constants'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
@@ -41,7 +41,16 @@ redirect('home');`
                     <SyntaxHighlighter
                         language="javascript"
                         style={customTheme}
-                        customStyle={customStyle}
+                        customStyle={{
+                            background: 'transparent',
+                            padding: 'inherit',
+                            fontSize: '1.2rem',
+                            width: '100%',
+                            maxWidth: '100%',
+                            overflowX: 'hidden',
+                            whiteSpace: 'pre-wrap',
+                            wordBreak: 'break-word',
+                        }}
                         showLineNumbers={true}
                         lineNumberStyle={{
                             color: '#607B96',

@@ -1,9 +1,12 @@
 import { FaFileAlt } from 'react-icons/fa'
 import { SnakePosition, TabType } from './types'
-import { FaPhone } from 'react-icons/fa6'
+import { FaCss3, FaPhone } from 'react-icons/fa6'
 import { IoMdMail } from 'react-icons/io'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { FaHtml5, FaJs, FaReact } from 'react-icons/fa6'
+import { RiNextjsFill } from 'react-icons/ri'
 
+// Snake Game Constants
 export const GRID_SIZE = 15
 export const CELL_SIZE = 16
 export const INITIAL_SNAKE: SnakePosition[] = [
@@ -11,7 +14,7 @@ export const INITIAL_SNAKE: SnakePosition[] = [
     { x: 7, y: 8 },
     { x: 7, y: 9 },
 ]
-
+// Navigation Tabs
 export const tabs: TabType[] = [
     { id: '', label: '_hello' },
     {
@@ -34,15 +37,6 @@ export const aboutContent = {
 *  with clean and maintainable code.
 *  Strong foundation in JavaScript (ES6+), HTML5, CSS3,
 *  and UI/UX principles.
-*/`,
-
-    'bio/soft-skills': `/**
-* Soft Skills
-*  Problem-solving: Analytical mindset with focus on clean solutions.
-*  Communication: Strong collaboration and feedback skills.
-*  Teamwork: Experienced in Agile environments and code reviews.
-*  Time Management: Efficient in meeting deadlines under pressure.
-*  Adaptability: Always open to learning new tools and frameworks.
 */`,
 
     'bio/interests': `/**
@@ -76,6 +70,14 @@ export const aboutContent = {
 *  Testing & Debugging (Chrome DevTools),
 *  Performance Optimization, SEO Best Practices,
 *  Team Communication, Code Reviews, Documentation.
+*/`,
+    'skills/soft-skills': `/**
+* Soft Skills
+*  Problem-solving: Analytical mindset with focus on clean solutions.
+*  Communication: Strong collaboration and feedback skills.
+*  Teamwork: Experienced in Agile environments and code reviews.
+*  Time Management: Efficient in meeting deadlines under pressure.
+*  Adaptability: Always open to learning new tools and frameworks.
 */`,
 
     // 🎓 Education
@@ -170,78 +172,60 @@ export const personalInfoItems = [
         ],
     },
 ]
+// Contact Items
 export const contactItems = [
     { name: 'mahmoud4h5@gmail.com', icon: IoMdMail },
     { name: '+201016074277', icon: FaPhone },
 ]
-export const codeSnippets = [
-    {
-        id: 1,
-        user: {
-            username: '@mahmoud25osama',
-            timestamp: 'Created 5 months ago',
-        },
-        actions: {
-            details: '1 file',
-            stars: '3 stars',
-        },
-        code: `function initializeModelChunk(chunk){
-  const value = parseModel(chunk._response,chunk._value);
-  const initializedChunk = (chunk);
-  initializedChunk._status = INITIALIZED;
-  initializedChunk._value = value;
-  return value;
-}`,
-    },
-    {
-        id: 2,
-        user: {
-            username: '@mahmoud25osama',
-            timestamp: 'Created 5 months ago',
-        },
-        actions: {
-            details: '1 file',
-            stars: '5 stars',
-        },
-        code: `export function parseModelTuple(
-  response: Response,
-  value: {+[key: string]: JSONValue},): any {
-  const tuple: [mixed, mixed, mixed, mixed] = (value:any);`,
-    },
-]
 
+// Projects & Technologies
 export const projects = [
     {
-        id: 1,
+        id: '1',
         title: 'Project 1 // _ui-animations',
         description: 'Duis aute irure dolor in velit esse cillum dolore.',
+        image: '/projects/project1.png',
+        liveUrl: 'https://example.com/project1',
+        repoUrl: 'https://example.com/project1-repo',
+        gallery: ['/projects/project1-1.png', '/projects/project1-2.png'],
         buttonText: 'view-project',
         tech: 'react',
     },
     {
-        id: 2,
+        id: '2',
         title: 'Project 2 // _tetris-game',
         description: 'Duis aute irure dolor in velit esse cillum dolore.',
+        image: '/projects/project1.png',
+        liveUrl: 'https://example.com/project2',
+        repoUrl: 'https://example.com/project2-repo',
+        gallery: ['/projects/project2-1.png', '/projects/project2-2.png'],
         buttonText: 'view-project',
         tech: 'react js',
     },
     {
-        id: 3,
+        id: '3',
         title: 'Project 3 // _weather-app',
         description: 'Duis aute irure dolor in velit esse cillum dolore.',
+        image: '/projects/project3.png',
+        liveUrl: 'https://example.com/project3',
+        repoUrl: 'https://example.com/project3-repo',
+        gallery: ['/projects/project3-1.png', '/projects/project3-2.png'],
         buttonText: 'view-project',
         tech: 'react',
     },
 ]
-
-export const customStyle = {
-    backgroundColor: 'transparent',
-    padding: '0',
-    margin: '0',
-    fontSize: 'inherit',
-    lineHeight: 'inherit',
-}
-
+export const technologies = [
+    {
+        id: 'html,css',
+        name: 'HTML,CSS',
+        icon: FaCss3,
+        color: 'text-orange-500',
+    },
+    { id: 'js', name: 'JavaScript', icon: FaJs, color: 'text-yellow-400' },
+    { id: 'react', name: 'React', icon: FaReact, color: 'text-cyan-400' },
+    { id: 'nextjs', name: 'Next.js', icon: RiNextjsFill, color: 'text-white' },
+]
+// Syntax Highlighter Theme
 export const customTheme = {
     ...vscDarkPlus,
     'code[class*="language-"]': {
@@ -258,7 +242,7 @@ export const customTheme = {
     keyword: { color: '#C792EA' },
     function: { color: '#E06C75' },
     string: { color: '#43D9AD' },
-    comment: { color: '#607B96' },
+    comment: { color: '#90A1B9' },
     operator: { color: '#607B96' },
     punctuation: { color: '#607B96' },
     constant: { color: '#E06C75' },
