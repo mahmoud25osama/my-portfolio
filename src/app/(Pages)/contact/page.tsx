@@ -3,7 +3,6 @@ import CodePreview from '@/components/sections/CodePreview'
 import ContactForm from '@/components/sections/ContactForm'
 import ContactSidebar from '@/components/sections/ContactSidebar'
 import { useState } from 'react'
-import { FaX } from 'react-icons/fa6'
 
 const Contact = () => {
     const [formData, setFormData] = useState({

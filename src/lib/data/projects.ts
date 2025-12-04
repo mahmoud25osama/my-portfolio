@@ -8,7 +8,7 @@ export const projects = [
         title: '// _ShopFlow-ECommerce',
         description:
             'Full-featured e-commerce platform built with React, Redux Toolkit, React Query & Tailwind CSS.',
-        tech: ['react', 'redux', 'tailwind'],
+        tech: 'react',
         techIcon: {
             icon: FaReact,
             bg: 'bg-cyan-500/20',
@@ -42,7 +42,7 @@ export const projects = [
         title: '// _CreatorPreneur-Landing-Page',
         description:
             'Modern landing page with React, Tailwind, Sanity CMS, RTL support & dark mode.',
-        tech: ['react', 'tailwind'],
+        tech: 'react',
         techIcon: {
             icon: FaReact,
             bg: 'bg-cyan-500/20',
@@ -180,7 +180,7 @@ export const projects = [
         title: '// _Leon-Agency-Template',
         description:
             'Modern flat agency landing page converted from PSD to HTML/CSS.',
-        tech: ['html,css'],
+        tech: 'html,css',
         techIcon: {
             icon: FaCss3Alt,
             bg: 'bg-blue-500/20',
@@ -194,7 +194,7 @@ export const projects = [
         id: '13',
         title: '// _Kasper-Creative-Template',
         description: 'Creative one-page portfolio template converted from PSD.',
-        tech: ['html,css'],
+        tech: 'html,css',
         techIcon: {
             icon: FaCss3Alt,
             bg: 'bg-blue-500/20',
@@ -209,7 +209,7 @@ export const projects = [
         title: '// _Elrouby-World-Template',
         description:
             'Clean agency/portfolio template converted from PSD to code.',
-        tech: ['html,css'],
+        tech: 'html,css',
         techIcon: {
             icon: FaHtml5,
             bg: 'bg-orange-500/20',

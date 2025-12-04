@@ -1,7 +1,8 @@
 'use client'
+import { projectType } from '@/lib/types'
 import Image from 'next/image'
 
-export default function ProjectCard({ project }: { project: any }) {
+export default function ProjectCard({ project }: { project: projectType }) {
     return (
         <div className="flex flex-col gap-4 group">
             {/* Project Title */}
@@ -23,12 +24,14 @@ export default function ProjectCard({ project }: { project: any }) {
                     />
                     {/* Tech Badge */}
                     <div
-                        className={`absolute top-4 right-4 w-10 h-10 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 ${project.techIcon.bg} backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center shadow-2xl ring-1 ring-white/10`}
+                        className={`absolute top-4 right-4 w-10 h-10 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 ${project.techIcon?.bg} backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center shadow-2xl ring-1 ring-white/10`}
                     >
-                        <project.techIcon.icon
-                            size={26}
-                            className={project.techIcon.color}
-                        />
+                        {project.techIcon?.icon && (
+                            <project.techIcon.icon
+                                size={26}
+                                className={project.techIcon.color}
+                            />
+                        )}
                     </div>
                 </div>
 

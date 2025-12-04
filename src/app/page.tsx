@@ -24,17 +24,17 @@ const HomePage = () => {
                                 Mahmoud Osama
                             </h1>
                             <h2 className="text-3xl leading-tight text-indigo-500 font-normal">
-                                &gt; Front-end developer
+                                {`> Front-end developer`}
                             </h2>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-2">
                         <p className="text-slate-400 text-base">
-                            // complete the game to continue
+                            {`// complete the game to continue`}
                         </p>
                         <p className="text-slate-400 text-base">
-                            // find my profile on Github:
+                            {`// find my profile on Github:`}
                         </p>
                         <p className="text-base">
                             <span className="text-indigo-500">const </span>
@@ -46,7 +46,7 @@ const HomePage = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                &quot;https://github.com/mahmoud25osama&quot;
+                                {`&quot;https://github.com/mahmoud25osama&quot;`}
                             </a>
                         </p>
                     </div>

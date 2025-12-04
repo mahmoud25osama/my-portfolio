@@ -253,9 +253,9 @@ const SnakeGame = () => {
                 <div className="flex flex-col gap-6">
                     <div className="bg-slate-800 rounded-lg p-3 flex flex-col items-center gap-3">
                         <p className="text-white text-sm text-center leading-5">
-                            // use keyboard
+                            {`// use keyboard`}
                             <br />
-                            // arrows to play
+                            {`// arrows to play`}
                         </p>
 
                         <div className="flex flex-col items-center gap-2">
@@ -303,7 +303,7 @@ const SnakeGame = () => {
                     </div>
 
                     <div className="flex flex-col items-center gap-2 px-3">
-                        <p className="text-white text-sm">// food left</p>
+                        <p className="text-white text-sm">{`// food left`}</p>
 
                         <div className="flex flex-col gap-2">
                             <div className="flex gap-2">
