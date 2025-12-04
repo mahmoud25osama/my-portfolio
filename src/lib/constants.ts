@@ -3,7 +3,7 @@ import { SnakePosition, TabType } from './types'
 import { FaCss3, FaPhone } from 'react-icons/fa6'
 import { IoMdMail } from 'react-icons/io'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { FaHtml5, FaJs, FaReact } from 'react-icons/fa6'
+import { FaJs, FaReact } from 'react-icons/fa6'
 import { RiNextjsFill } from 'react-icons/ri'
 
 // Snake Game Constants
