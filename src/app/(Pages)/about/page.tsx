@@ -15,10 +15,8 @@ import {
     FaBriefcase,
     FaChevronDown,
     FaChevronRight,
-    FaEye,
     FaFolder,
     FaHeart,
-    FaStar,
     FaUser,
     FaX,
 } from 'react-icons/fa6'

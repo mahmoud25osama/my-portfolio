@@ -4,6 +4,7 @@ import TechSidebar from '@/components/sections/TechSidebar'
 import ProjectCard from '@/components/sections/ProjectCard'
 import { projects } from '@/lib/data/projects'
 import { FaXmark } from 'react-icons/fa6'
+import { projectType } from '@/lib/types'
 
 export default function ProjectsPage() {
     const [selectedTech, setSelectedTech] = useState<string[]>(['react'])
@@ -63,7 +64,7 @@ export default function ProjectsPage() {
                                 {filteredProjects.map((project) => (
                                     <ProjectCard
                                         key={project.id}
-                                        project={project}
+                                        project={project as projectType}
                                     />
                                 ))}
                             </div>
