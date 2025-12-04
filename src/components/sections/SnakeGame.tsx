@@ -171,7 +171,7 @@ const SnakeGame = () => {
     }
 
     return (
-        <div className="relative w-[507px] h-[469px] bg-gradient-to-br from-teal-900/70 to-teal-500/10 border border-slate-600 rounded-md backdrop-blur-sm shadow-inner p-8 flex gap-6">
+        <div className="hidden relative w-[507px] h-[469px] bg-gradient-to-br from-teal-900/70 to-teal-500/10 border border-slate-600 rounded-md backdrop-blur-sm shadow-inner p-8 lg:flex gap-6">
             <div className="relative w-60 h-full">
                 <div className="w-full h-full bg-slate-800 rounded-lg shadow-inner relative overflow-hidden">
                     {/* Game Grid */}
