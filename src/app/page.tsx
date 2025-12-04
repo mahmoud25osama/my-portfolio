@@ -30,7 +30,7 @@ const HomePage = () => {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <p className="text-slate-400 text-base">
+                        <p className="hidden lg:block text-slate-400 text-base">
                             {`// complete the game to continue`}
                         </p>
                         <p className="text-slate-400 text-base">
