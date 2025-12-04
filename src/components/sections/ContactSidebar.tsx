@@ -1,8 +1,7 @@
 import { contactItems } from '@/lib/constants'
 import { useState } from 'react'
 import { FaExternalLinkAlt } from 'react-icons/fa'
-import { FaChevronDown, FaPhone } from 'react-icons/fa6'
-import { IoMdMail } from 'react-icons/io'
+import { FaChevronDown } from 'react-icons/fa6'
 type SectionKey = 'contacts' | 'find-me'
 const ContactSidebar = () => {
     const [expandedSections, setExpandedSections] = useState({
