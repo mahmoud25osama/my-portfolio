@@ -2,7 +2,6 @@
 
 import { customTheme } from '@/lib/constants'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export default function NotFound() {
     const codeString = `const page = findPage('you-were-looking-for');
