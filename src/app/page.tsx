@@ -15,7 +15,7 @@ const HomePage = () => {
 
             <div className="flex items-center justify-center gap-36 z-10 w-full max-w-7xl p-8">
                 <div className="flex flex-col gap-20 w-[504px]">
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 items-center text-center lg:items-start lg:text-left">
                         <p className="text-slate-400 text-lg leading-relaxed">
                             Hi all. I am
                         </p>
@@ -29,7 +29,7 @@ const HomePage = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 items-center text-center lg:items-start lg:text-left">
                         <p className="hidden lg:block text-slate-400 text-base">
                             {`// complete the game to continue`}
                         </p>
@@ -46,7 +46,7 @@ const HomePage = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                {`&quot;https://github.com/mahmoud25osama&quot;`}
+                                {`"https://github.com/mahmoud25osama"`}
                             </a>
                         </p>
                     </div>
