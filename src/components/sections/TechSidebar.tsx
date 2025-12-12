@@ -150,7 +150,7 @@ export default function TechSidebar({
                     {/* Mobile Apply */}
                     <div className="lg:hidden h-12 border-t border-slate-600 flex items-center justify-between px-4 py-3 flex-shrink-0">
                         <span className="text-slate-400 text-sm">
-                            {`// {selectedTech.length} selected //`}
+                            {`// ${selectedTech.length} selected //`}
                         </span>
                         <button
                             onClick={onMobileClose}
