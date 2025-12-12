@@ -30,7 +30,7 @@ export default function TechSidebar({
             {/* Mobile Toggle Button */}
             <button
                 onClick={onMobileToggle}
-                className="lg:hidden fixed bottom-16 right-4 z-50 w-14 h-14 bg-indigo-600 rounded-full flex items-center justify-center shadow-2xl hover:bg-indigo-700 transition-all"
+                className="lg:hidden fixed bottom-18 right-4 z-50 w-14 h-14 bg-indigo-600 rounded-full flex items-center justify-center shadow-2xl hover:bg-indigo-700 transition-all"
             >
                 <FaFilter size={20} className="text-white" />
                 {selectedTech.length > 0 && (
