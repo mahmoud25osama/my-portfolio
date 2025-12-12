@@ -11,7 +11,6 @@ import { useState } from 'react'
 import {
     FaArrowDown,
     FaArrowRight,
-    FaBars,
     FaBriefcase,
     FaChevronDown,
     FaChevronRight,
@@ -64,6 +63,13 @@ const About = () => {
                     onClick={() => setIsMobileSidebarOpen(false)}
                 />
             )}
+            {/* Mobile Sidebar Toggle Button */}
+            <button
+                onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
+                className="lg:hidden fixed bottom-18 right-4 z-50 w-14 h-14 bg-indigo-600 rounded-full flex items-center justify-center shadow-2xl hover:bg-indigo-700 transition-all"
+            >
+                <FaFolder size={20} className="text-white" />
+            </button>
             {/* Sidebar */}
             <div
                 className={`
@@ -287,15 +293,6 @@ const About = () => {
                 {/* File Tab */}
                 {activePath && (
                     <div className="h-10 border-b border-slate-600 flex bg-slate-900">
-                        {/* Mobile Sidebar Toggle Button */}
-                        <button
-                            onClick={() =>
-                                setIsMobileSidebarOpen(!isMobileSidebarOpen)
-                            }
-                            className="md:hidden px-4 py-4 h-full flex items-center border-r border-slate-600 hover:bg-slate-800/50 transition-colors"
-                        >
-                            <FaBars size={20} className="text-white" />
-                        </button>
                         <div className="border-r border-slate-600 flex items-center px-4 gap-3">
                             <span className="text-slate-400 text-sm lg:text-base truncate max-w-[150px] lg:max-w-none">
                                 {`${activePath.split('/')[1]}.txt`}
