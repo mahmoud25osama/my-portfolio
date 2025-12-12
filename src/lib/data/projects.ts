@@ -220,4 +220,19 @@ export const projects = [
             'https://mahmoud25osama.github.io/HTML_And_CSS_Template_Three/',
         year: 2025,
     },
+    {
+        id: '15',
+        title: '// _Animated-Login-Form',
+        description:
+            'A lightweight, responsive animated login component built with HTML, CSS . This repository contains a simple, accessible login form with smooth animations that you can drop into any project or use as a starting point for a custom authentication UI.',
+        tech: 'html,css',
+        techIcon: {
+            icon: FaHtml5,
+            bg: 'bg-orange-500/20',
+            color: 'text-orange-500',
+        },
+        image: '/img/Animated_Login.png',
+        liveUrl: 'https://mahmoud25osama.github.io/Animated-Login/',
+        year: 2025,
+    },
 ]
