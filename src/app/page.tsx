@@ -29,7 +29,7 @@ const HomePage = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-2 items-center text-center lg:items-start lg:text-left">
+                    <div className="flex flex-col gap-2 items-start text-left">
                         <p className="hidden lg:block text-slate-400 text-base">
                             {`// complete the game to continue`}
                         </p>
@@ -47,6 +47,22 @@ const HomePage = () => {
                                 rel="noopener noreferrer"
                             >
                                 {`"https://github.com/mahmoud25osama"`}
+                            </a>
+                        </p>
+                        <p className="text-slate-400 text-base">
+                            {`// download my resume:`}
+                        </p>
+                        <p className="text-base">
+                            <span className="text-indigo-500">const </span>
+                            <span className="text-blue-400">resume</span>
+                            <span className="text-slate-400"> = </span>
+                            <a
+                                href="/Mahmoud Osama .pdf"
+                                className="text-amber-300 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {`"/Mahmoud-Osama-Resume.pdf"`}
                             </a>
                         </p>
                     </div>
