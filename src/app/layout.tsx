@@ -24,9 +24,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" className={firaCode.variable}>
-            <body className="min-h-screen flex flex-col g-0 font-mono">
+            <body className="h-screen flex flex-col overflow-hidden font-mono">
                 <Navbar />
-                <main className="flex-1 h-[calc(100vh-7rem)] overflow-hidden ">
+                <main className="flex-1 overflow-hidden">
                     {children}
                 </main>
                 <Footer />
