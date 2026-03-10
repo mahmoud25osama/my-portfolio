@@ -24,8 +24,19 @@ const HomePage = () => {
                                 Mahmoud Osama
                             </h1>
                             <h2 className="text-3xl leading-tight text-indigo-500 font-normal">
-                                {`> Front-end developer`}
+                                {`> MERN Stack Developer`}
                             </h2>
+                            <p className="text-slate-400 text-base leading-relaxed mt-2">
+                                {`// Building full-stack web apps with`}
+                                <br />
+                                <span className="text-teal-400">MongoDB</span>
+                                <span className="text-slate-400"> · </span>
+                                <span className="text-green-400">Express</span>
+                                <span className="text-slate-400"> · </span>
+                                <span className="text-cyan-400">React</span>
+                                <span className="text-slate-400"> · </span>
+                                <span className="text-blue-400">Node.js</span>
+                            </p>
                         </div>
                     </div>
 
