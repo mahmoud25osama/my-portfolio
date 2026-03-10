@@ -70,6 +70,7 @@ const HomePage = () => {
                             <a
                                 href="/Mahmoud Osama .pdf"
                                 className="text-amber-300 hover:underline"
+                                download='mahmoud osama.pdf'
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
