@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
                     <FaLinkedinIn size={24} className="text-slate-500" />
                 </a>
                 <a
-                    href="https://github.com/mahmoud25osama"
+                    href="https://github.com/Mahmud-O"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-14 h-full lg:hidden border-r border-slate-600 flex items-center justify-center hover:bg-slate-800 transition-colors"
@@ -30,13 +30,13 @@ const Footer: React.FC = () => {
 
             <div className="hidden lg:block h-full border-l border-slate-600">
                 <a
-                    href="https://github.com/mahmoud25osama"
+                    href="https://github.com/Mahmud-O"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-8 py-4 h-full flex items-center gap-2 hover:bg-slate-800 transition-colors"
                 >
                     <span className=" text-slate-400 text-base">
-                        @mahmoud25osama
+                        @Mahmud-O
                     </span>
                     <FaGithub size={24} className="text-slate-500" />
                 </a>
