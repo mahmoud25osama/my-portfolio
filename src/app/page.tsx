@@ -52,12 +52,12 @@ const HomePage = () => {
                             <span className="text-blue-400">githubLink</span>
                             <span className="text-slate-400"> = </span>
                             <a
-                                href="https://github.com/mahmoud25osama"
+                                href="https://github.com/Mahmud-O"
                                 className="text-amber-300 hover:underline"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                {`"https://github.com/mahmoud25osama"`}
+                                {`"https://github.com/Mahmud-O"`}
                             </a>
                         </p>
                         <p className="text-slate-400 text-base">
