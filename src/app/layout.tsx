@@ -1,8 +1,16 @@
-import { Fira_Code } from 'next/font/google'
+import { Inter, Fira_Code } from 'next/font/google'
 import './globals.css'
 import type { Metadata } from 'next'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import CustomCursor from '@/components/layout/CustomCursor'
+
+const inter = Inter({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600', '700', '800', '900'],
+    variable: '--font-inter',
+    display: 'swap',
+})
 
 const firaCode = Fira_Code({
     subsets: ['latin'],
@@ -12,9 +20,22 @@ const firaCode = Fira_Code({
 })
 
 export const metadata: Metadata = {
-    title: 'Mahmoud | Developer Portfolio',
-    description: 'Front-end Developer Portfolio with Snake Game',
-    keywords: ['portfolio', 'developer', 'frontend', 'nextjs', 'react'],
+    title: 'Mahmoud Osama | Front-end Developer',
+    description:
+        'Front-end Developer specializing in React.js, Next.js & modern web experiences.',
+    keywords: [
+        'portfolio',
+        'frontend developer',
+        'react',
+        'nextjs',
+        'typescript',
+        'mahmoud osama',
+    ],
+    openGraph: {
+        title: 'Mahmoud Osama — Front-end Developer',
+        description: 'Building fast, beautiful, and accessible web experiences.',
+        type: 'website',
+    },
 }
 
 export default function RootLayout({
@@ -23,10 +44,11 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" className={firaCode.variable}>
-            <body className="min-h-screen flex flex-col g-0 font-mono">
+        <html lang="en" className={`${inter.variable} ${firaCode.variable}`}>
+            <body className="min-h-screen flex flex-col font-inter antialiased">
+                <CustomCursor />
                 <Navbar />
-                <main className="flex-1 h-[calc(100vh-7rem)] overflow-hidden ">
+                <main className="flex-1">
                     {children}
                 </main>
                 <Footer />
