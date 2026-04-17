@@ -16,7 +16,6 @@ const Footer = () => {
                     </span>
                 </div>
 
-<<<<<<< HEAD
                 {/* Right - social links */}
                 <div className="flex items-center gap-1">
                     <a
@@ -42,38 +41,6 @@ const Footer = () => {
                         _contact-me →
                     </Link>
                 </div>
-=======
-                <a
-                    href="https://www.linkedin.com/in/ma252002/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-14 h-full border-r border-slate-600 flex items-center justify-center hover:bg-slate-800 transition-colors"
-                >
-                    <FaLinkedinIn size={24} className="text-slate-500" />
-                </a>
-                <a
-                    href="https://github.com/Mahmud-O"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-14 h-full lg:hidden border-r border-slate-600 flex items-center justify-center hover:bg-slate-800 transition-colors"
-                >
-                    <FaGithub size={24} className="  text-slate-500" />
-                </a>
-            </div>
-
-            <div className="hidden lg:block h-full border-l border-slate-600">
-                <a
-                    href="https://github.com/Mahmud-O"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-8 py-4 h-full flex items-center gap-2 hover:bg-slate-800 transition-colors"
-                >
-                    <span className=" text-slate-400 text-base">
-                        @Mahmud-O
-                    </span>
-                    <FaGithub size={24} className="text-slate-500" />
-                </a>
->>>>>>> 0e4d5c11257e9fdd67006d55efcb506dd2c1894c
             </div>
         </footer>
     )

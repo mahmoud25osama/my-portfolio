@@ -44,18 +44,11 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-<<<<<<< HEAD
         <html lang="en" className={`${inter.variable} ${firaCode.variable}`}>
             <body className="min-h-screen flex flex-col font-inter antialiased">
                 <CustomCursor />
                 <Navbar />
                 <main className="flex-1">
-=======
-        <html lang="en" className={firaCode.variable}>
-            <body className="h-screen flex flex-col overflow-hidden font-mono">
-                <Navbar />
-                <main className="flex-1 overflow-hidden">
->>>>>>> 0e4d5c11257e9fdd67006d55efcb506dd2c1894c
                     {children}
                 </main>
                 <Footer />
