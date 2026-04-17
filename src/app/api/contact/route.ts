@@ -10,6 +10,13 @@ export async function POST(req: Request) {
             })
         }
 
+        if (!process.env.MAIL_USER || !process.env.MAIL_PASS) {
+            console.error('Missing required environment variables: MAIL_USER or MAIL_PASS is not set')
+            return new Response(JSON.stringify({ error: 'Server configuration error' }), {
+                status: 500,
+            })
+        }
+
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -19,10 +26,11 @@ export async function POST(req: Request) {
         })
 
         const mailOptions = {
-            from: `"${name}" <${email}>`,
+            from: `"${name}" <${process.env.MAIL_USER}>`,
+            replyTo: `"${name}" <${email}>`,
             to: process.env.MAIL_USER,
             subject: `Portfolio Contact — ${name}`,
-            text: message,
+            text: `From: ${name} <${email}>\n\n${message}`,
         }
 
         await transporter.sendMail(mailOptions)
