@@ -35,9 +35,10 @@ const contactLinks = [
     },
 ]
 
-const ContactPage = () => {
+export default function ContactSection() {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' })
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+    const sectionRef = useRef<HTMLElement>(null)
     const leftRef = useRef<HTMLDivElement>(null)
     const rightRef = useRef<HTMLDivElement>(null)
     const successRef = useRef<HTMLDivElement>(null)
@@ -45,12 +46,14 @@ const ContactPage = () => {
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.fromTo(leftRef.current, { opacity: 0, x: -50 }, {
-                opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.1
+                opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.1,
+                scrollTrigger: { trigger: leftRef.current, start: 'top 85%' }
             })
             gsap.fromTo(rightRef.current, { opacity: 0, x: 50 }, {
-                opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.25
+                opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.25,
+                scrollTrigger: { trigger: rightRef.current, start: 'top 85%' }
             })
-        })
+        }, sectionRef)
         return () => ctx.revert()
     }, [])
 
@@ -90,7 +93,7 @@ const ContactPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#080b14] pt-32 pb-24 relative overflow-hidden">
+        <section id="contact" ref={sectionRef} className="bg-[#080b14] pt-32 pb-24 relative overflow-hidden">
             {/* Background decoration */}
             <div className="pointer-events-none absolute bottom-0 right-0 w-[600px] h-[600px] opacity-10 rounded-full"
                 style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.7) 0%, transparent 70%)', filter: 'blur(80px)' }}
@@ -99,15 +102,15 @@ const ContactPage = () => {
                 style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.6) 0%, transparent 70%)', filter: 'blur(80px)' }}
             />
 
-            <div className="max-w-5xl mx-auto px-6">
+            <div className="max-w-5xl mx-auto px-6 relative z-10">
                 {/* Page header */}
                 <div className="text-center mb-16">
                     <p className="text-sm font-mono text-teal-400 mb-4 uppercase tracking-widest">
                         // contact
                     </p>
-                    <h1 className="text-5xl md:text-6xl font-black text-white mb-4">
+                    <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
                         Let&apos;s <span className="gradient-text">Work Together</span>
-                    </h1>
+                    </h2>
                     <p className="text-slate-400 max-w-xl mx-auto text-base">
                         Have a project in mind? I&apos;d love to hear about it. Send me a message and
                         let&apos;s build something great.
@@ -254,8 +257,6 @@ const ContactPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
-
-export default ContactPage

@@ -1,170 +1,214 @@
 'use client'
-import { tabs } from '@/lib/constants'
-import { usePathname, useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
-import { FaBars, FaXmark } from 'react-icons/fa6'
+import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import gsap from 'gsap'
+import { FaBars, FaXmark, FaGithub } from 'react-icons/fa6'
+
+const navLinks = [
+    { href: '#hero', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#contact', label: 'Contact' },
+]
 
 const Navbar = () => {
-    const router = useRouter()
     const pathname = usePathname()
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const [mobileOpen, setMobileOpen] = useState(false)
+    const [scrolled, setScrolled] = useState(false)
+    const [activeSection, setActiveSection] = useState('hero')
+    const navRef = useRef<HTMLElement>(null)
+    const mobileMenuRef = useRef<HTMLDivElement>(null)
 
-    // Close menu when route changes
+    // GSAP mount animation
     useEffect(() => {
-        setIsMobileMenuOpen(false)
-    }, [pathname])
+        if (!navRef.current) return
+        gsap.fromTo(
+            navRef.current,
+            { y: -80, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', delay: 0.2 }
+        )
+    }, [])
+
+    // Scroll detection
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 40)
+        window.addEventListener('scroll', onScroll, { passive: true })
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
+
+    // Intersection observer for section tracking
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id)
+                }
+            })
+        }, { threshold: 0.3 })
+        
+        const sections = document.querySelectorAll('section[id]')
+        sections.forEach(s => observer.observe(s))
+        return () => observer.disconnect()
+    }, [])
+
+    // Animate mobile menu open/close
+    useEffect(() => {
+        if (!mobileMenuRef.current) return
+        if (mobileOpen) {
+            gsap.fromTo(
+                mobileMenuRef.current,
+                { opacity: 0, y: -12 },
+                { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }
+            )
+        }
+    }, [mobileOpen])
+
+    // Close mobile on route change (anchor click)
+    useEffect(() => {
+        setMobileOpen(false)
+    }, [activeSection])
 
     return (
         <>
-            {/* Desktop & Mobile Header */}
-            <header className="h-14 border-b border-slate-600 flex justify-between items-center relative z-50 bg-slate-900">
-                {/* Logo */}
-                <div className="flex items-center gap-[119px]">
-                    <div className=" px-6 md:px-8 py-4 h-full flex items-center ">
-                        <span className="text-slate-400 text-lg font-normal">
-                            Mahmoud-Osama
-                        </span>
-                    </div>
-                    <div className="hidden md:flex items-center h-full">
-                        {tabs.slice(0, 3).map((tab, index) => (
-                            <div
-                                key={tab.id}
-                                className={`h-full border-r border-slate-600 flex flex-col ${
-                                    index === 0
-                                        ? 'border-l border-slate-600'
-                                        : ''
-                                }`}
-                            >
-                                <div
-                                    className={`px-8 py-4 h-full flex items-center cursor-pointer hover:bg-slate-800/50 transition-colors ${
-                                        pathname === `/${tab.id}`
-                                            ? 'border-b-2 border-orange-400'
-                                            : ''
-                                    }`}
-                                    onClick={() => router.push(`/${tab.id}`)}
-                                >
-                                    <span
-                                        className={`text-base ${
-                                            pathname === `/${tab.id}`
-                                                ? 'text-white'
-                                                : 'text-slate-400'
-                                        }`}
-                                    >
-                                        {tab.label}
-                                    </span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center h-full md:justify-between">
-                    <div className="h-full border-l border-slate-600">
-                        <div
-                            className={`px-8 py-4 h-full flex items-center cursor-pointer hover:bg-slate-800/50 transition-colors ${
-                                pathname === '/contact'
-                                    ? 'border-b-2 border-orange-400'
-                                    : ''
-                            }`}
-                            onClick={() => router.push('/contact')}
-                        >
-                            <span
-                                className={`text-base ${
-                                    pathname === '/contact'
-                                        ? 'text-white'
-                                        : 'text-slate-400'
-                                }`}
-                            >
-                                _contact-me
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Mobile Hamburger Button */}
-                <button
-                    className="md:hidden px-6 py-4 h-full flex items-center border-l border-slate-600 hover:bg-slate-800/50 transition-colors"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Toggle menu"
+            <header
+                ref={navRef}
+                className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-6 transition-all duration-500 ${
+                    scrolled ? 'pt-3' : 'pt-5'
+                }`}
+                style={{ opacity: 0 }}
+            >
+                {/* Glass pill */}
+                <nav
+                    className={`flex items-center justify-between gap-8 px-5 h-14 rounded-2xl transition-all duration-500 w-full max-w-3xl ${
+                        scrolled
+                            ? 'glass-strong shadow-2xl'
+                            : 'glass'
+                    }`}
                 >
-                    {isMobileMenuOpen ? (
-                        <FaXmark size={24} className="text-slate-400" />
-                    ) : (
-                        <FaBars size={24} className="text-slate-400" />
-                    )}
-                </button>
+                    {/* Logo */}
+                    <Link
+                        href="/"
+                        className="text-white font-bold text-lg tracking-tight shrink-0 hover:opacity-80 transition-opacity"
+                    >
+                        <span className="gradient-text">M</span>
+                        <span className="text-slate-200">ahmoud</span>
+                        <span className="text-slate-500">.</span>
+                    </Link>
+
+                    {/* Desktop links */}
+                    <div className="hidden md:flex items-center gap-1">
+                        {navLinks.map((link) => {
+                            const active = activeSection === link.href.replace('#', '')
+                            return (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className={`relative px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                                        active
+                                            ? 'text-white'
+                                            : 'text-slate-400 hover:text-slate-200'
+                                    }`}
+                                >
+                                    {active && (
+                                        <span
+                                            className="absolute inset-0 rounded-lg"
+                                            style={{
+                                                background:
+                                                    'linear-gradient(135deg, rgba(99,102,241,0.2), rgba(6,182,212,0.12))',
+                                                border: '1px solid rgba(99,102,241,0.3)',
+                                            }}
+                                        />
+                                    )}
+                                    <span className="relative z-10">{link.label}</span>
+                                </Link>
+                            )
+                        })}
+                    </div>
+
+                    {/* Right side */}
+                    <div className="hidden md:flex items-center gap-3 shrink-0">
+                        <a
+                            href="https://github.com/mahmoud25osama"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                            aria-label="GitHub"
+                        >
+                            <FaGithub size={18} />
+                        </a>
+                        <a
+                            href="/Mahmoud Osama .pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary !py-2 !px-4 !text-sm"
+                        >
+                            Resume
+                        </a>
+                    </div>
+
+                    {/* Mobile hamburger */}
+                    <button
+                        className="md:hidden p-2 text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                        onClick={() => setMobileOpen(!mobileOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        {mobileOpen ? <FaXmark size={20} /> : <FaBars size={20} />}
+                    </button>
+                </nav>
             </header>
 
-            {/* Mobile Menu Overlay - Prevent body scroll with fixed positioning */}
-            {isMobileMenuOpen && (
-                <div
-                    className="md:hidden fixed inset-0 top-14 bg-black/50 z-40 backdrop-blur-sm"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                />
-            )}
-
-            {/* Mobile Menu */}
-            <nav
-                className={`md:hidden fixed top-14 left-0 right-0 bg-slate-900 border-b border-slate-600 z-50 transform transition-all duration-300 ease-in-out ${
-                    isMobileMenuOpen
-                        ? 'translate-y-0 opacity-100'
-                        : '-translate-y-full opacity-0 pointer-events-none'
-                }`}
-            >
-                <div className="flex flex-col max-h-[calc(100vh-3.5rem)] overflow-y-auto">
-                    {/* Main Tabs */}
-                    {tabs.slice(0, 3).map((tab) => (
-                        <div
-                            key={tab.id}
-                            className={`border-b border-slate-600 ${
-                                pathname === `/${tab.id}`
-                                    ? 'bg-slate-800/50 border-l-4 border-l-orange-400'
-                                    : 'border-l-4 border-l-transparent'
-                            }`}
-                            onClick={() => router.push(`/${tab.id}`)}
-                        >
-                            <div className="px-6 py-4 cursor-pointer hover:bg-slate-800/50 active:bg-slate-800/70 transition-colors">
-                                <span
-                                    className={`text-base ${
-                                        pathname === `/${tab.id}`
-                                            ? 'text-white'
-                                            : 'text-slate-400'
-                                    }`}
+            {/* Mobile menu */}
+            {mobileOpen && (
+                <>
+                    <div
+                        className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+                        onClick={() => setMobileOpen(false)}
+                    />
+                    <div
+                        ref={mobileMenuRef}
+                        className="fixed top-24 left-4 right-4 z-50 glass-strong rounded-2xl p-4"
+                        style={{ opacity: 0 }}
+                    >
+                        <div className="flex flex-col gap-1">
+                            {navLinks.map((link) => {
+                                const active = activeSection === link.href.replace('#', '')
+                                return (
+                                    <Link
+                                        key={link.href}
+                                        href={link.href}
+                                        className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                                            active
+                                                ? 'bg-indigo-500/20 text-white border border-indigo-500/30'
+                                                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                                        }`}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                )
+                            })}
+                            <div className="pt-2 mt-1 border-t border-white/10 flex gap-3">
+                                <a
+                                    href="https://github.com/mahmoud25osama"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 btn-secondary !py-2.5 !text-sm justify-center"
                                 >
-                                    {tab.label}
-                                </span>
+                                    <FaGithub size={16} />
+                                    GitHub
+                                </a>
+                                <a
+                                    href="/Mahmoud Osama .pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 btn-primary !py-2.5 !text-sm justify-center"
+                                >
+                                    Resume
+                                </a>
                             </div>
                         </div>
-                    ))}
-
-                    {/* Contact Tab */}
-                    <div
-                        className={`border-b border-slate-600 ${
-                            pathname === '/contact'
-                                ? 'bg-slate-800/50 border-l-4 border-l-orange-400'
-                                : 'border-l-4 border-l-transparent'
-                        }`}
-                        onClick={() => router.push('/contact')}
-                    >
-                        <div className="px-6 py-4 cursor-pointer hover:bg-slate-800/50 active:bg-slate-800/70 transition-colors">
-                            <span
-                                className={`text-base ${
-                                    pathname === '/contact'
-                                        ? 'text-white'
-                                        : 'text-slate-400'
-                                }`}
-                            >
-                                _contact-me
-                            </span>
-                        </div>
                     </div>
-                </div>
-            </nav>
-
-            {/* Prevent body scroll with overlay - CSS only solution */}
-            {isMobileMenuOpen && (
-                <div className="fixed inset-0 -z-10 md:hidden" />
+                </>
             )}
         </>
     )
