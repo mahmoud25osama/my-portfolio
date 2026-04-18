@@ -1,8 +1,7 @@
 'use client'
-import { projectType } from '@/lib/types'
-import Image from 'next/image'
+import { Project } from '@/lib/types'
 
-export default function ProjectCard({ project }: { project: projectType }) {
+export default function ProjectCard({ project }: { project: Project }) {
     return (
         <div className="flex flex-col gap-4 group">
             {/* Project Title */}
@@ -14,13 +13,10 @@ export default function ProjectCard({ project }: { project: projectType }) {
             <div className="relative rounded-lg overflow-hidden border border-slate-600 hover:border-slate-500 transition-all hover:shadow-lg hover:shadow-indigo-500/10">
                 {/* Project Image */}
                 <div className="w-full h-32 sm:h-36 lg:h-40 bg-gradient-to-br from-slate-700 to-slate-800 relative overflow-hidden">
-                    <Image
+                    <img
                         src={project.image}
                         alt={project.title}
-                        fill
-                        className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority={project.featured}
+                        className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                     {/* Tech Badge */}
                     <div

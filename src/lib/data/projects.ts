@@ -1,8 +1,9 @@
 import { FaJsSquare } from 'react-icons/fa'
 import { FaReact, FaHtml5, FaCss3Alt } from 'react-icons/fa6'
 import { RiNextjsFill } from 'react-icons/ri'
+import { Project } from '@/lib/types'
 
-export const projects = [
+export const projects: Project[] = [
     {
         id: '1',
         title: '// _ShopFlow-ECommerce',
@@ -165,7 +166,7 @@ export const projects = [
         title: '// _Dashboard-HTML&CSS',
         description:
             'Fully responsive dashboard template built with pure HTML & CSS.',
-        tech: ['html,css'],
+        tech: 'html,css',
         techIcon: {
             icon: FaHtml5,
             bg: 'bg-orange-500/20',

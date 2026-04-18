@@ -1,5 +1,5 @@
 import { FaFileAlt } from 'react-icons/fa'
-import { SnakePosition, TabType } from './types'
+import { SnakePosition, Tab } from './types'
 import { FaCss3, FaPhone } from 'react-icons/fa6'
 import { IoMdMail } from 'react-icons/io'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -15,7 +15,7 @@ export const INITIAL_SNAKE: SnakePosition[] = [
     { x: 7, y: 9 },
 ]
 // Navigation Tabs
-export const tabs: TabType[] = [
+export const tabs: Tab[] = [
     { id: '', label: '_hello' },
     {
         id: 'about',
@@ -30,12 +30,12 @@ export const tabs: TabType[] = [
 export const aboutContent = {
     'bio/summary': `/**
 * About Me
-*  Passionate and results-driven Front-End Web Developer
+*  Passionate and results-driven Full Stack MERN Developer
 *  with expertise in modern web technologies including
-*  React.js, Next.js, and TypeScript.
-*  Focused on building responsive, user-centric applications
+*  MongoDB, Express.js, React.js, and Node.js.
+*  Focused on building responsive, scalable full-stack applications
 *  with clean and maintainable code.
-*  Strong foundation in JavaScript (ES6+), HTML5, CSS3,
+*  Strong foundation in JavaScript (ES6+), robust database schemas
 *  and UI/UX principles.
 */`,
 
@@ -48,12 +48,12 @@ export const aboutContent = {
 */`,
 
     // 💻 Skills
-    'skills/front-end': `/**
-* Front-End Technologies
+    'skills/full-stack': `/**
+* Full Stack Technologies
 *  JavaScript (ES6+), TypeScript,
-*  HTML5, CSS3, React.js, Next.js,
-*  Context API, React Hooks, Tailwind CSS,
-*  Responsive Design, CSS Grid, Flexbox.
+*  React.js, Node.js, Express.js, MongoDB,
+*  Next.js, Tailwind CSS, RESTful APIs,
+*  Responsive Design, Redux Toolkit.
 */`,
 
     'skills/tools': `/**
@@ -119,13 +119,14 @@ export const aboutContent = {
 *  - Focused on debugging, testing, and optimization.
 */`,
 
-    'experience/self-learning': `/**
-* Self-Learning & Project Development
-*  Duration: 2022 – Present
-*  - Completed 15+ real-world projects using React.js & Next.js.
-*  - Practiced Git/GitHub workflows and CI/CD deployment.
-*  - Focused on scalable, performant, and user-friendly UIs.
-*  - Continuous learner following industry best practices.
+    'experience/digilians-internship': `/**
+* Full Stack MERN Intern
+*  Digilians
+*  Duration: Jan 2026 – Present
+*  - Built real-world scalable platforms using MongoDB, Express, React, and Node.js.
+*  - Practiced Agile workflows, seamless API integrations, and robust database architectures.
+*  - Focused on scalable, performant, and user-friendly full-stack application development.
+*  - Collaborated closely with teams to deploy production-ready web experiences.
 */`,
 }
 export const personalInfoItems = [
@@ -143,7 +144,7 @@ export const personalInfoItems = [
         color: 'text-teal-400',
         folderColor: 'text-teal-500',
         files: [
-            { name: 'front-end.txt', icon: FaFileAlt },
+            { name: 'full-stack.txt', icon: FaFileAlt },
             { name: 'tools.txt', icon: FaFileAlt },
             { name: 'professional-skills.txt', icon: FaFileAlt },
             { name: 'soft-skills.txt', icon: FaFileAlt },
@@ -165,9 +166,9 @@ export const personalInfoItems = [
         files: [
             { name: 'iti-training.txt', icon: FaFileAlt },
             {
-                name: 'self-learning.txt',
+                name: 'digilians-internship.txt',
                 icon: FaFileAlt,
-                path: 'self-learning',
+                path: 'digilians-internship',
             },
         ],
     },

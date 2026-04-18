@@ -1,9 +1,8 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import gsap from 'gsap'
 import { FaBars, FaXmark, FaGithub } from 'react-icons/fa6'
+import Logo from './Logo'
 
 const navLinks = [
     { href: '#hero', label: 'Home' },
@@ -13,7 +12,6 @@ const navLinks = [
 ]
 
 const Navbar = () => {
-    const pathname = usePathname()
     const [mobileOpen, setMobileOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const [activeSection, setActiveSection] = useState('hero')
@@ -78,30 +76,28 @@ const Navbar = () => {
                 }`}
                 style={{ opacity: 0 }}
             >
-                {/* Glass pill */}
-                <nav
-                    className={`flex items-center justify-between gap-8 px-5 h-14 rounded-2xl transition-all duration-500 w-full max-w-3xl ${
-                        scrolled
-                            ? 'glass-strong shadow-2xl'
-                            : 'glass'
-                    }`}
-                >
-                    {/* Logo */}
-                    <Link
-                        href="/"
-                        className="text-white font-bold text-lg tracking-tight shrink-0 hover:opacity-80 transition-opacity"
-                    >
-                        <span className="gradient-text">M</span>
-                        <span className="text-slate-200">ahmoud</span>
-                        <span className="text-slate-500">.</span>
-                    </Link>
+      {/* Glass pill - responsive sizing */}
+      <nav
+        className={`flex items-center justify-between gap-4 sm:gap-8 px-4 sm:px-5 h-14 sm:h-16 lg:h-16 rounded-2xl transition-all duration-500 w-full max-w-3xl xl:max-w-4xl 3xl:max-w-5xl ${
+          scrolled
+            ? 'glass-strong shadow-2xl'
+            : 'glass'
+        }`}
+      >
+          {/* Logo */}
+          <a
+            href="#hero"
+            className="shrink-0 hover:opacity-80 transition-opacity"
+          >
+            <Logo size={40} />
+          </a>
 
                     {/* Desktop links */}
                     <div className="hidden md:flex items-center gap-1">
                         {navLinks.map((link) => {
                             const active = activeSection === link.href.replace('#', '')
                             return (
-                                <Link
+                                <a
                                     key={link.href}
                                     href={link.href}
                                     className={`relative px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
@@ -121,7 +117,7 @@ const Navbar = () => {
                                         />
                                     )}
                                     <span className="relative z-10">{link.label}</span>
-                                </Link>
+                                </a>
                             )
                         })}
                     </div>
@@ -174,7 +170,7 @@ const Navbar = () => {
                             {navLinks.map((link) => {
                                 const active = activeSection === link.href.replace('#', '')
                                 return (
-                                    <Link
+                                    <a
                                         key={link.href}
                                         href={link.href}
                                         className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
@@ -184,7 +180,7 @@ const Navbar = () => {
                                         }`}
                                     >
                                         {link.label}
-                                    </Link>
+                                    </a>
                                 )
                             })}
                             <div className="pt-2 mt-1 border-t border-white/10 flex gap-3">

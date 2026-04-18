@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import emailjs from '@emailjs/browser'
 import { FaGithub, FaCircleCheck, FaArrowRight } from 'react-icons/fa6'
 import { IoMdMail } from 'react-icons/io'
 import { FaPhone } from 'react-icons/fa6'
@@ -28,8 +29,8 @@ const contactLinks = [
     {
         icon: FaGithub,
         label: 'GitHub',
-        value: 'github.com/mahmoud25osama',
-        href: 'https://github.com/mahmoud25osama',
+        value: 'github.com/Mahmoud-O',
+        href: 'https://github.com/Mahmoud-O',
         accent: '#e2e8f0',
         bg: 'rgba(255,255,255,0.06)',
     },
@@ -76,18 +77,20 @@ export default function ContactSection() {
         e.preventDefault()
         setStatus('loading')
         try {
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            })
-            if (res.ok) {
-                setStatus('success')
-                setFormData({ name: '', email: '', message: '' })
-            } else {
-                setStatus('error')
-            }
-        } catch {
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    message: formData.message,
+                },
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+            )
+            setStatus('success')
+            setFormData({ name: '', email: '', message: '' })
+        } catch (error) {
+            console.error('EmailJS Error:', error)
             setStatus('error')
         }
     }
@@ -102,22 +105,18 @@ export default function ContactSection() {
                 style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.6) 0%, transparent 70%)', filter: 'blur(80px)' }}
             />
 
-            <div className="max-w-5xl mx-auto px-6 relative z-10">
-                {/* Page header */}
-                <div className="text-center mb-16">
-                    <p className="text-sm font-mono text-teal-400 mb-4 uppercase tracking-widest">
-                        // contact
-                    </p>
-                    <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
-                        Let&apos;s <span className="gradient-text">Work Together</span>
-                    </h2>
-                    <p className="text-slate-400 max-w-xl mx-auto text-base">
-                        Have a project in mind? I&apos;d love to hear about it. Send me a message and
-                        let&apos;s build something great.
-                    </p>
-                </div>
+  <div className="max-w-5xl xl:max-w-6xl 3xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+      {/* Page header */}
+      <div className="text-center mb-12 sm:mb-16">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-white mb-4">
+          Contact <span className="gradient-text">Me</span>
+        </h2>
+        <p className="text-slate-400 max-w-xl mx-auto text-base sm:text-lg px-2 sm:px-0">
+          Have a project in mind? I&apos;d love to hear about it. Send me a message and let&apos;s build something great.
+        </p>
+      </div>
 
-                <div className="grid md:grid-cols-[1fr_1.5fr] gap-8 items-start">
+      <div className="grid md:grid-cols-[1fr_1.5fr] gap-6 sm:gap-8 items-start">
                     {/* Left: Contact info */}
                     <div ref={leftRef} className="flex flex-col gap-5" style={{ opacity: 0 }}>
                         {contactLinks.map((link) => {
