@@ -4,26 +4,26 @@ import { RiNextjsFill } from 'react-icons/ri'
 import { Project } from '@/lib/types'
 
 export const projects: Project[] = [
+    
     {
         id: '1',
-        title: '// _ShopFlow-ECommerce',
+        title: 'ShopFlow-ECommerce',
         description:
             'Full-featured e-commerce platform built with React, Redux Toolkit, React Query & Tailwind CSS.',
         tech: 'react',
         techIcon: {
             icon: FaReact,
-            bg: 'bg-cyan-500/20',
-            color: 'text-cyan-400',
+            bg: 'bg-sky-500/10',
+            color: 'text-sky-400',
         },
         image: '/img/Ecommerce.png',
         liveUrl: 'https://shopflow-ecommerce.netlify.app/',
-        githubUrl: 'https://github.com/mahmoud25osama/ShopFlow-ECommerce',
         featured: true,
         year: 2024,
     },
     {
         id: '2',
-        title: '// _TaskFlow-Task-Manager',
+        title: 'TaskFlow-Task-Manager',
         description:
             'Clean & minimal To-Do app with localStorage persistence using Vanilla JavaScript.',
         tech: 'js',
@@ -34,20 +34,19 @@ export const projects: Project[] = [
         },
         image: '/img/Screenshot 2025-12-03 at 16-35-38 To-Do List.png',
         liveUrl: 'https://mahmoud25osama.github.io/To-Do-List/',
-        githubUrl: 'https://github.com/mahmoud25osama/To-Do-List',
         featured: true,
         year: 2025,
     },
     {
         id: '3',
-        title: '// _CreatorPreneur-Landing-Page',
+        title: 'CreatorPreneur-Landing-Page',
         description:
             'Modern landing page with React, Tailwind, Sanity CMS, RTL support & dark mode.',
         tech: 'react',
         techIcon: {
             icon: FaReact,
-            bg: 'bg-cyan-500/20',
-            color: 'text-cyan-400',
+            bg: 'bg-sky-500/10',
+            color: 'text-sky-400',
         },
         image: '/img/CreatorPreneur Academy.png',
         liveUrl: 'https://creatorpreneur-academy.netlify.app/',
@@ -56,7 +55,7 @@ export const projects: Project[] = [
     },
     {
         id: '4',
-        title: '// _Portfolio-V1',
+        title: 'Portfolio-V1',
         description:
             'My first professional portfolio built with Next.js and Tailwind CSS.',
         tech: 'nextjs',
@@ -67,12 +66,11 @@ export const projects: Project[] = [
         },
         image: '/img/Portfolio.png',
         liveUrl: 'https://github.com/mahmoud25osama/Portfolio-V1',
-        githubUrl: 'https://github.com/mahmoud25osama/Portfolio-V1',
         year: 2024,
     },
     {
         id: '5',
-        title: '// _Weather-App',
+        title: 'Weather-App',
         description:
             'Beautiful glassmorphism weather dashboard with real-time data and forecasts.',
         tech: 'js',
@@ -83,19 +81,18 @@ export const projects: Project[] = [
         },
         image: '/img/dark Weather Dashboard.png',
         liveUrl: 'https://mahmoud25osama.github.io/Weather-Dashboard/',
-        githubUrl: 'https://github.com/mahmoud25osama/Weather-Dashboard',
         year: 2024,
     },
     {
         id: '6',
-        title: '// _Streamflix-Clone',
+        title: 'Streamflix-Clone',
         description:
             'Netflix clone with authentication, protected routes, search & pixel-perfect UI.',
         tech: 'react',
         techIcon: {
             icon: FaReact,
-            bg: 'bg-cyan-500/20',
-            color: 'text-cyan-400',
+            bg: 'bg-sky-500/10',
+            color: 'text-sky-400',
         },
         image: '/img/Subnail StreamFlix - Stream Movies & TV Shows.png',
         liveUrl: 'https://streamflix25.netlify.app',
@@ -103,14 +100,14 @@ export const projects: Project[] = [
     },
     {
         id: '7',
-        title: '// _Ali-Dynasty-Chronicles',
+        title: 'Ali-Dynasty-Chronicles',
         description:
             'Interactive bilingual website about Muhammad Ali Pasha dynasty (1805-1952).',
         tech: 'react',
         techIcon: {
             icon: FaReact,
-            bg: 'bg-cyan-500/20',
-            color: 'text-cyan-400',
+            bg: 'bg-sky-500/10',
+            color: 'text-sky-400',
         },
         image: '/img/sm Family Ali.png',
         liveUrl: 'https://ali-dynasty-chronicles.netlify.app/',
@@ -118,14 +115,14 @@ export const projects: Project[] = [
     },
     {
         id: '8',
-        title: '// _Meal-Explorer',
+        title: 'Meal-Explorer',
         description:
             'Recipe discovery app with meal categories and detailed cooking instructions.',
         tech: 'react',
         techIcon: {
             icon: FaReact,
-            bg: 'bg-cyan-500/20',
-            color: 'text-cyan-400',
+            bg: 'bg-sky-500/10',
+            color: 'text-sky-400',
         },
         image: '/img/Screenshot 2025-09-01 at 01-52-20 Meal Explorer.png',
         liveUrl: 'https://meal25explorer.netlify.app/',
@@ -133,7 +130,7 @@ export const projects: Project[] = [
     },
     {
         id: '9',
-        title: '// _Text-Color-Range',
+        title: 'Text-Color-Range',
         description:
             'Real-time text color changer using RGB sliders (Vanilla JS + Bootstrap).',
         tech: 'js',
@@ -148,7 +145,7 @@ export const projects: Project[] = [
     },
     {
         id: '10',
-        title: '// _Library-App',
+        title: 'Library-App',
         description:
             'Simple book library app with add/remove functionality and localStorage.',
         tech: 'js',
@@ -163,7 +160,7 @@ export const projects: Project[] = [
     },
     {
         id: '11',
-        title: '// _Dashboard-HTML&CSS',
+        title: 'Dashboard-HTML&CSS',
         description:
             'Fully responsive dashboard template built with pure HTML & CSS.',
         tech: 'html,css',
@@ -178,7 +175,7 @@ export const projects: Project[] = [
     },
     {
         id: '12',
-        title: '// _Leon-Agency-Template',
+        title: 'Leon-Agency-Template',
         description:
             'Modern flat agency landing page converted from PSD to HTML/CSS.',
         tech: 'html,css',
@@ -193,7 +190,7 @@ export const projects: Project[] = [
     },
     {
         id: '13',
-        title: '// _Kasper-Creative-Template',
+        title: 'Kasper-Creative-Template',
         description: 'Creative one-page portfolio template converted from PSD.',
         tech: 'html,css',
         techIcon: {
@@ -207,7 +204,7 @@ export const projects: Project[] = [
     },
     {
         id: '14',
-        title: '// _Elrouby-World-Template',
+        title: 'Elrouby-World-Template',
         description:
             'Clean agency/portfolio template converted from PSD to code.',
         tech: 'html,css',
@@ -223,7 +220,7 @@ export const projects: Project[] = [
     },
     {
         id: '15',
-        title: '// _Animated-Login-Form',
+        title: 'Animated-Login-Form',
         description:
             'A lightweight, responsive animated login component built with HTML, CSS . This repository contains a simple, accessible login form with smooth animations that you can drop into any project or use as a starting point for a custom authentication UI.',
         tech: 'html,css',
@@ -235,5 +232,21 @@ export const projects: Project[] = [
         image: '/img/Animated_Login.png',
         liveUrl: 'https://mahmoud25osama.github.io/Animated-Login/',
         year: 2025,
+    },
+    {
+        id: '16',
+        title: 'PrepYou.ai',
+        description:
+            'full-pipeline AI interview preparation platform built for software engineers. It simulates the real hiring process end-to-end — candidates choose their tech major and experience level, submit a job description, assign a target company, then go through AI-powered stages including CV review, MCQ assessment, HR interview, and a live technical interview with a coding challenge. At the end, the platform generates a detailed performance report with actionable feedback.',
+        tech: 'react',
+        techIcon: {
+            icon: FaReact,
+            bg: 'bg-blue-500/10',
+            color: 'text-blue-400',
+        },
+        image: "/img/PrepYou.ai — We'll PrepYou To Pass Your Interview.png",
+        liveUrl: 'https://prepyouai-waiting-list.vercel.app/',
+        featured: true,
+        year: 2026,
     },
 ]

@@ -40,12 +40,31 @@ export interface Skill {
 }
 
 export interface TimelineItem {
+  id: string
   period: string
   role: string
   org: string
   desc: string
   accent: string
   icon: IconType
+  type: 'experience' | 'education'
+}
+
+export interface ServiceItem {
+  title: string
+  description: string
+  icon: IconType
+  accent: string
+  features: string[]
+}
+
+export interface ContactLink {
+  icon: IconType
+  label: string
+  value: string
+  href: string
+  accent: string
+  bg: string
 }
 
 export interface Stat {
