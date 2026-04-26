@@ -4,49 +4,11 @@ import { motion } from 'framer-motion'
 import { LogoIcon } from './Logo'
 import Logo from './Logo'
 import { HiArrowUpRight } from 'react-icons/hi2'
-import { FaGithub, FaLinkedin } from 'react-icons/fa6'
+import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants'
 
-/* ─── Marquee ─────────────────────────────────────── */
-const STACK = [
-  'React', 'Node.js', 'MongoDB', 'Express.js', 'TypeScript',
-  'Next.js', 'Tailwind CSS', 'REST APIs', 'Git', 'GSAP',
-  'Framer Motion', 'Vite', 'JavaScript', 'HTML & CSS', 'Docker',
-]
 
-function Marquee() {
-  const items = [...STACK, ...STACK]
-  return (
-    <div className="relative overflow-hidden py-4 border-y border-white/10 bg-white/[0.02]">
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10
-                      bg-gradient-to-r from-[#0a0a0a] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10
-                      bg-gradient-to-l from-[#0a0a0a] to-transparent" />
-      <div
-        className="flex gap-8 whitespace-nowrap w-max animate-marquee-left"
-        style={{ animationDuration: '30s' }}
-      >
-        {items.map((item, i) => (
-          <span key={i} className="flex items-center gap-3 text-sm font-mono text-slate-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
 
-const NAV_LINKS = [
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Contact', href: '#contact' },
-]
 
-const SOCIAL_LINKS = [
-  { name: 'GitHub', href: 'https://github.com/mahmoud25osama', icon: FaGithub },
-  { name: 'LinkedIn', href: 'https://linkedin.com/in/mahmoud25osama', icon: FaLinkedin },
-]
 
 /* ─── Footer ──────────────────────────────────────── */
 const Footer = () => {
@@ -63,7 +25,7 @@ const Footer = () => {
       <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
 
       {/* ── Name band & CTAs ──────────────────────────────── */}
-      <div className="relative max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-8 pt-24 pb-16 text-center">
+      <div className="relative max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-8 pt-24 pb-10 text-center">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -126,7 +88,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8"
+          className="mt-20 pt-5 px-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between  gap-8"
         >
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
             {NAV_LINKS.map((link) => (
@@ -161,9 +123,6 @@ const Footer = () => {
           </div>
         </motion.div>
       </div>
-
-      {/* ── Marquee ─────────────────────────────────── */}
-      <Marquee />
 
       {/* ── Bottom bar ──────────────────────────────── */}
       <div className="relative max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-8 py-6

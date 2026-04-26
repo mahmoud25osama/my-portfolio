@@ -3,7 +3,8 @@ import { SnakePosition, Tab, Skill, SkillCategory, Stat, TimelineItem, ServiceIt
 import {
   FaCss3, FaPhone, FaJs, FaReact, FaGithub, FaGitAlt, FaNodeJs, FaCode,
   FaServer, FaRocket, FaDatabase, FaHtml5, FaCss3Alt, FaNpm, FaFigma,
-  FaLinux, FaPalette, FaMobileScreen, FaGaugeHigh, FaGraduationCap
+  FaLinux, FaPalette, FaMobileScreen, FaGaugeHigh, FaGraduationCap,
+  FaLinkedin
 } from 'react-icons/fa6'
 import { IoMdMail } from 'react-icons/io'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -417,4 +418,16 @@ export const timelineData: TimelineItem[] = [
     icon: FaGraduationCap,
     type: 'education',
   },
+]
+
+export const NAV_LINKS = [
+  { name: 'About', href: '#about' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Contact', href: '#contact' },
+]
+
+export const SOCIAL_LINKS = [
+  { name: 'GitHub', href: 'https://github.com/mahmoud25osama', icon: FaGithub },
+  { name: 'LinkedIn', href: 'https://linkedin.com/in/mahmoud25osama', icon: FaLinkedin },
 ]
