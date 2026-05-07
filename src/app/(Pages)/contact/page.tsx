@@ -35,10 +35,9 @@ const contactLinks = [
     },
 ]
 
-export default function ContactSection() {
+const ContactPage = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' })
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-    const sectionRef = useRef<HTMLElement>(null)
     const leftRef = useRef<HTMLDivElement>(null)
     const rightRef = useRef<HTMLDivElement>(null)
     const successRef = useRef<HTMLDivElement>(null)
@@ -46,14 +45,12 @@ export default function ContactSection() {
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.fromTo(leftRef.current, { opacity: 0, x: -50 }, {
-                opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.1,
-                scrollTrigger: { trigger: leftRef.current, start: 'top 85%' }
+                opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.1
             })
             gsap.fromTo(rightRef.current, { opacity: 0, x: 50 }, {
-                opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.25,
-                scrollTrigger: { trigger: rightRef.current, start: 'top 85%' }
+                opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.25
             })
-        }, sectionRef)
+        })
         return () => ctx.revert()
     }, [])
 
@@ -93,7 +90,7 @@ export default function ContactSection() {
     }
 
     return (
-        <section id="contact" ref={sectionRef} className="bg-[#080b14] pt-32 pb-24 relative overflow-hidden">
+        <div className="min-h-screen bg-[#080b14] pt-32 pb-24 relative overflow-hidden">
             {/* Background decoration */}
             <div className="pointer-events-none absolute bottom-0 right-0 w-[600px] h-[600px] opacity-10 rounded-full"
                 style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.7) 0%, transparent 70%)', filter: 'blur(80px)' }}
@@ -102,15 +99,15 @@ export default function ContactSection() {
                 style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.6) 0%, transparent 70%)', filter: 'blur(80px)' }}
             />
 
-            <div className="max-w-5xl mx-auto px-6 relative z-10">
+            <div className="max-w-5xl mx-auto px-6">
                 {/* Page header */}
                 <div className="text-center mb-16">
                     <p className="text-sm font-mono text-teal-400 mb-4 uppercase tracking-widest">
                         // contact
                     </p>
-                    <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
+                    <h1 className="text-5xl md:text-6xl font-black text-white mb-4">
                         Let&apos;s <span className="gradient-text">Work Together</span>
-                    </h2>
+                    </h1>
                     <p className="text-slate-400 max-w-xl mx-auto text-base">
                         Have a project in mind? I&apos;d love to hear about it. Send me a message and
                         let&apos;s build something great.
@@ -257,6 +254,8 @@ export default function ContactSection() {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     )
 }
+
+export default ContactPage

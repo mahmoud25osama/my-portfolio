@@ -18,12 +18,12 @@ const filters: { id: FilterId; label: string }[] = [
     { id: 'html,css', label: 'HTML/CSS' },
 ]
 
-export default function ProjectsSection() {
+const ProjectsPage = () => {
     const [activeFilter, setActiveFilter] = useState<FilterId>('all')
-    const sectionRef = useRef<HTMLElement>(null)
     const gridRef = useRef<HTMLDivElement>(null)
     const headerRef = useRef<HTMLDivElement>(null)
     const filterBarRef = useRef<HTMLDivElement>(null)
+    const activeLineRef = useRef<HTMLDivElement>(null)
 
     // Normalize tech to string
     const getTech = (p: typeof projects[0]): string => {
@@ -40,14 +40,12 @@ export default function ProjectsSection() {
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.fromTo(headerRef.current, { opacity: 0, y: 40 }, {
-                opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.1,
-                scrollTrigger: { trigger: headerRef.current, start: 'top 85%' }
+                opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.1
             })
             gsap.fromTo(filterBarRef.current, { opacity: 0, y: 20 }, {
-                opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 0.2,
-                scrollTrigger: { trigger: filterBarRef.current, start: 'top 85%' }
+                opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 0.35
             })
-        }, sectionRef)
+        })
         return () => ctx.revert()
     }, [])
 
@@ -58,41 +56,26 @@ export default function ProjectsSection() {
         gsap.fromTo(
             cards,
             { opacity: 0, y: 40, scale: 0.95 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.08, ease: 'power2.out', clearProps: 'all' }
+            { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.08, ease: 'power2.out' }
         )
     }, [activeFilter])
 
-    // Scroll trigger for grid on load
-    useEffect(() => {
-        if (!gridRef.current) return
-        const ctx = gsap.context(() => {
-            const cards = gridRef.current?.querySelectorAll('.project-card')
-            if (cards) {
-                gsap.from(cards, {
-                    scrollTrigger: { trigger: gridRef.current, start: 'top 85%' },
-                    opacity: 0, y: 40, scale: 0.95, duration: 0.5, stagger: 0.08, ease: 'power2.out'
-                })
-            }
-        }, sectionRef)
-        return () => ctx.revert()
-    }, [])
-
     return (
-        <section id="projects" ref={sectionRef} className="min-h-screen bg-[#080b14] pt-32 pb-24 relative overflow-hidden">
+        <div className="min-h-screen bg-[#080b14] pt-32 pb-24">
             {/* Background orb */}
-            <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-10 rounded-full"
+            <div className="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-10 rounded-full"
                 style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.6) 0%, transparent 70%)', filter: 'blur(80px)' }}
             />
 
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="max-w-6xl mx-auto px-6">
                 {/* Header */}
                 <div ref={headerRef} className="mb-12 text-center" style={{ opacity: 0 }}>
                     <p className="text-sm font-mono text-indigo-400 mb-4 uppercase tracking-widest">
                         // my work
                     </p>
-                    <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
+                    <h1 className="text-5xl md:text-6xl font-black text-white mb-4">
                         Featured <span className="gradient-text">Projects</span>
-                    </h2>
+                    </h1>
                     <p className="text-base text-slate-400 max-w-xl mx-auto">
                         A collection of real-world projects I&apos;ve built — from full-stack apps to
                         creative UI experiments.
@@ -101,7 +84,7 @@ export default function ProjectsSection() {
 
                 {/* Filter bar */}
                 <div ref={filterBarRef} className="flex justify-center mb-12" style={{ opacity: 0 }}>
-                    <div className="inline-flex flex-wrap justify-center items-center gap-1 p-1.5 rounded-2xl glass">
+                    <div className="inline-flex items-center gap-1 p-1.5 rounded-2xl glass">
                         {filters.map((f) => (
                             <button
                                 key={f.id}
@@ -138,7 +121,7 @@ export default function ProjectsSection() {
                             <div
                                 key={project.id}
                                 className="project-card group relative flex flex-col rounded-2xl overflow-hidden gradient-border"
-                                style={{ background: 'rgba(255,255,255,0.03)' }}
+                                style={{ background: 'rgba(255,255,255,0.03)', opacity: 0 }}
                             >
                                 {/* Image */}
                                 <div className="relative h-48 overflow-hidden bg-slate-800/50">
@@ -233,6 +216,10 @@ export default function ProjectsSection() {
                     </div>
                 )}
             </div>
-        </section>
+
+            <div ref={activeLineRef} />
+        </div>
     )
 }
+
+export default ProjectsPage
