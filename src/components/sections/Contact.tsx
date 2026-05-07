@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+<<<<<<< HEAD
 import { FaGithub, FaCircleCheck, FaArrowRight } from 'react-icons/fa6'
 import { IoMdMail } from 'react-icons/io'
 import { FaPhone } from 'react-icons/fa6'
@@ -34,6 +35,16 @@ const contactLinks = [
         bg: 'rgba(255,255,255,0.06)',
     },
 ]
+=======
+import emailjs from '@emailjs/browser'
+import { FaCircleCheck, FaArrowRight } from 'react-icons/fa6'
+import MagneticLink from '@/components/ui/MagneticLink'
+
+gsap.registerPlugin(ScrollTrigger)
+
+import { contactLinks } from '@/lib/constants'
+
+>>>>>>> 9a21abc488d24c764ea9adb13813ece089b99597
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' })
@@ -57,7 +68,10 @@ export default function ContactSection() {
         return () => ctx.revert()
     }, [])
 
+<<<<<<< HEAD
     // Animate success state
+=======
+>>>>>>> 9a21abc488d24c764ea9adb13813ece089b99597
     useEffect(() => {
         if (status === 'success' && successRef.current) {
             gsap.fromTo(
@@ -76,6 +90,7 @@ export default function ContactSection() {
         e.preventDefault()
         setStatus('loading')
         try {
+<<<<<<< HEAD
             const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -88,11 +103,28 @@ export default function ContactSection() {
                 setStatus('error')
             }
         } catch {
+=======
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    message: formData.message,
+                },
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+            )
+            setStatus('success')
+            setFormData({ name: '', email: '', message: '' })
+        } catch (error) {
+            console.error('EmailJS Error:', error)
+>>>>>>> 9a21abc488d24c764ea9adb13813ece089b99597
             setStatus('error')
         }
     }
 
     return (
+<<<<<<< HEAD
         <section id="contact" ref={sectionRef} className="bg-[#080b14] pt-32 pb-24 relative overflow-hidden">
             {/* Background decoration */}
             <div className="pointer-events-none absolute bottom-0 right-0 w-[600px] h-[600px] opacity-10 rounded-full"
@@ -146,13 +178,46 @@ export default function ContactSection() {
                                 </a>
                             )
                         })}
+=======
+        <section id="contact" ref={sectionRef} className="bg-[#0a0a0a] pt-32 pb-24 relative overflow-hidden">
+            {/* Background decoration */}
+            <div className="pointer-events-none absolute bottom-0 right-0 w-[600px] h-[600px] opacity-10 rounded-full"
+                style={{ background: 'radial-gradient(circle, rgba(185,28,28,0.7) 0%, transparent 70%)', filter: 'blur(80px)' }}
+            />
+            <div className="pointer-events-none absolute top-0 left-0 w-[400px] h-[400px] opacity-10 rounded-full"
+                style={{ background: 'radial-gradient(circle, rgba(220,38,38,0.6) 0%, transparent 70%)', filter: 'blur(80px)' }}
+            />
+
+  <div className="max-w-5xl xl:max-w-6xl 3xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+      {/* Page header */}
+      <div className="text-center mb-12 sm:mb-16">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-white mb-4">
+          Contact <span className="gradient-text">Me</span>
+        </h2>
+        <p className="text-slate-400 max-w-xl mx-auto text-base sm:text-lg px-2 sm:px-0">
+          Have a project in mind? I&apos;d love to hear about it. Send me a message and let&apos;s build something great.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-[1fr_1.5fr] gap-6 sm:gap-8 items-start">
+                    {/* Left: Magnetic contact links */}
+                    <div ref={leftRef} className="flex flex-col gap-5" style={{ opacity: 0 }}>
+                        {contactLinks.map((link) => (
+                            <MagneticLink key={link.label} {...link} />
+                        ))}
+>>>>>>> 9a21abc488d24c764ea9adb13813ece089b99597
 
                         {/* Fun note */}
                         <div className="p-5 rounded-2xl glass mt-2">
                             <p className="text-xs font-mono text-slate-500 mb-2">// response time</p>
                             <p className="text-slate-300 text-sm">
+<<<<<<< HEAD
                                 I typically reply within{' '}
                                 <span className="text-teal-400 font-semibold">24 hours</span>.
+=======
+                                I typically reply within
+                                <span className="gradient-text font-semibold">24 hours</span>.
+>>>>>>> 9a21abc488d24c764ea9adb13813ece089b99597
                                 Looking forward to your message! 🚀
                             </p>
                         </div>
