@@ -59,7 +59,7 @@ const stats = [
     { value: '2025', label: 'CS Graduate' },
 ]
 
-export default function AboutSection() {
+const AboutPage = () => {
     const heroRef = useRef<HTMLDivElement>(null)
     const skillsRef = useRef<HTMLDivElement>(null)
     const timelineRef = useRef<HTMLDivElement>(null)
@@ -72,9 +72,7 @@ export default function AboutSection() {
             gsap.fromTo(
                 heroRef.current,
                 { opacity: 0, y: 50 },
-                { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.1,
-                  scrollTrigger: { trigger: heroRef.current, start: 'top 85%' }
-                }
+                { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.1 }
             )
 
             // Stats counter animation
@@ -142,9 +140,9 @@ export default function AboutSection() {
     }, [])
 
     return (
-        <section id="about" className="min-h-screen bg-[#080b14] relative z-10 pt-20">
+        <div className="min-h-screen bg-[#080b14]">
             {/* Hero Section */}
-            <div className="relative pt-16 pb-20 px-6 overflow-hidden">
+            <section className="relative pt-36 pb-20 px-6 overflow-hidden">
                 <div className="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-20"
                     style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.5) 0%, transparent 70%)', filter: 'blur(80px)' }}
                 />
@@ -152,10 +150,10 @@ export default function AboutSection() {
                     <p className="text-sm font-mono text-indigo-400 mb-4 uppercase tracking-widest">
                         // about me
                     </p>
-                    <h2 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
+                    <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
                         Crafting Digital{' '}
                         <span className="gradient-text">Experiences</span>
-                    </h2>
+                    </h1>
                     <p className="text-lg text-slate-400 max-w-2xl leading-relaxed mb-8">
                         I&apos;m a passionate Front-End Developer from Egypt, specializing in building
                         beautiful, performant, and accessible web applications. I love turning
@@ -168,10 +166,10 @@ export default function AboutSection() {
                         </p>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Stats */}
-            <div className="py-16 px-6 border-y border-white/5">
+            <section className="py-16 px-6 border-y border-white/5">
                 <div ref={statsRef} className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
                     {stats.map(({ value, label }) => (
                         <div
@@ -184,15 +182,15 @@ export default function AboutSection() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </section>
 
             {/* Skills */}
-            <div className="py-20 px-6">
+            <section className="py-20 px-6">
                 <div className="max-w-4xl mx-auto">
                     <p className="text-sm font-mono text-teal-400 mb-3 uppercase tracking-widest">
                         // tech stack
                     </p>
-                    <h3 className="text-3xl font-bold text-white mb-10">Skills & Tools</h3>
+                    <h2 className="text-3xl font-bold text-white mb-10">Skills & Tools</h2>
                     <div ref={skillsRef} className="flex flex-wrap gap-3">
                         {skills.map(({ icon: Icon, label, color }) => (
                             <div
@@ -206,15 +204,15 @@ export default function AboutSection() {
                         ))}
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Timeline */}
-            <div className="py-20 px-6 bg-[#0d1120]/50">
+            <section className="py-20 px-6 bg-[#0d1120]/50">
                 <div className="max-w-4xl mx-auto">
                     <p className="text-sm font-mono text-violet-400 mb-3 uppercase tracking-widest">
                         // journey
                     </p>
-                    <h3 className="text-3xl font-bold text-white mb-12">Experience & Education</h3>
+                    <h2 className="text-3xl font-bold text-white mb-12">Experience & Education</h2>
                     <div ref={timelineRef} className="relative">
                         {/* Vertical line */}
                         <div className="absolute left-6 top-2 bottom-2 w-px bg-white/10" />
@@ -233,7 +231,7 @@ export default function AboutSection() {
                                     <span className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-2 block">
                                         {item.period}
                                     </span>
-                                    <h4 className="text-lg font-bold text-white mb-1">{item.role}</h4>
+                                    <h3 className="text-lg font-bold text-white mb-1">{item.role}</h3>
                                     <p className="text-sm font-medium mb-3" style={{ color: item.accent }}>
                                         {item.org}
                                     </p>
@@ -243,15 +241,15 @@ export default function AboutSection() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Contact info */}
-            <div ref={contactRef} className="py-20 px-6" style={{ opacity: 0 }}>
+            <section ref={contactRef} className="py-20 px-6" style={{ opacity: 0 }}>
                 <div className="max-w-4xl mx-auto">
                     <p className="text-sm font-mono text-pink-400 mb-3 uppercase tracking-widest">
                         // reach me
                     </p>
-                    <h3 className="text-3xl font-bold text-white mb-8">Let&apos;s Connect</h3>
+                    <h2 className="text-3xl font-bold text-white mb-8">Let&apos;s Connect</h2>
                     <div className="flex flex-col sm:flex-row gap-4">
                         <a
                             href="mailto:mahmoud4h5@gmail.com"
@@ -296,7 +294,9 @@ export default function AboutSection() {
                         </a>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     )
 }
+
+export default AboutPage
