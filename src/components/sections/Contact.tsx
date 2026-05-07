@@ -2,38 +2,14 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { FaGithub, FaCircleCheck, FaArrowRight } from 'react-icons/fa6'
-import { IoMdMail } from 'react-icons/io'
-import { FaPhone } from 'react-icons/fa6'
+import emailjs from '@emailjs/browser'
+import { FaCircleCheck, FaArrowRight } from 'react-icons/fa6'
+import MagneticLink from '@/components/ui/MagneticLink'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const contactLinks = [
-    {
-        icon: IoMdMail,
-        label: 'Email',
-        value: 'mahmoud4h5@gmail.com',
-        href: 'mailto:mahmoud4h5@gmail.com',
-        accent: '#615fff',
-        bg: 'rgba(97,95,255,0.1)',
-    },
-    {
-        icon: FaPhone,
-        label: 'Phone',
-        value: '+20 101 607 4277',
-        href: 'tel:+201016074277',
-        accent: '#06b6d4',
-        bg: 'rgba(6,182,212,0.1)',
-    },
-    {
-        icon: FaGithub,
-        label: 'GitHub',
-        value: 'github.com/mahmoud25osama',
-        href: 'https://github.com/mahmoud25osama',
-        accent: '#e2e8f0',
-        bg: 'rgba(255,255,255,0.06)',
-    },
-]
+import { contactLinks } from '@/lib/constants'
+
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' })
@@ -57,7 +33,6 @@ export default function ContactSection() {
         return () => ctx.revert()
     }, [])
 
-    // Animate success state
     useEffect(() => {
         if (status === 'success' && successRef.current) {
             gsap.fromTo(
@@ -76,83 +51,58 @@ export default function ContactSection() {
         e.preventDefault()
         setStatus('loading')
         try {
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            })
-            if (res.ok) {
-                setStatus('success')
-                setFormData({ name: '', email: '', message: '' })
-            } else {
-                setStatus('error')
-            }
-        } catch {
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    message: formData.message,
+                },
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+            )
+            setStatus('success')
+            setFormData({ name: '', email: '', message: '' })
+        } catch (error) {
+            console.error('EmailJS Error:', error)
             setStatus('error')
         }
     }
 
     return (
-        <section id="contact" ref={sectionRef} className="bg-[#080b14] pt-32 pb-24 relative overflow-hidden">
+        <section id="contact" ref={sectionRef} className="bg-[#0a0a0a] pt-32 pb-24 relative overflow-hidden">
             {/* Background decoration */}
             <div className="pointer-events-none absolute bottom-0 right-0 w-[600px] h-[600px] opacity-10 rounded-full"
-                style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.7) 0%, transparent 70%)', filter: 'blur(80px)' }}
+                style={{ background: 'radial-gradient(circle, rgba(185,28,28,0.7) 0%, transparent 70%)', filter: 'blur(80px)' }}
             />
             <div className="pointer-events-none absolute top-0 left-0 w-[400px] h-[400px] opacity-10 rounded-full"
-                style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.6) 0%, transparent 70%)', filter: 'blur(80px)' }}
+                style={{ background: 'radial-gradient(circle, rgba(220,38,38,0.6) 0%, transparent 70%)', filter: 'blur(80px)' }}
             />
 
-            <div className="max-w-5xl mx-auto px-6 relative z-10">
-                {/* Page header */}
-                <div className="text-center mb-16">
-                    <p className="text-sm font-mono text-teal-400 mb-4 uppercase tracking-widest">
-                        // contact
-                    </p>
-                    <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
-                        Let&apos;s <span className="gradient-text">Work Together</span>
-                    </h2>
-                    <p className="text-slate-400 max-w-xl mx-auto text-base">
-                        Have a project in mind? I&apos;d love to hear about it. Send me a message and
-                        let&apos;s build something great.
-                    </p>
-                </div>
+  <div className="max-w-5xl xl:max-w-6xl 3xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+      {/* Page header */}
+      <div className="text-center mb-12 sm:mb-16">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-white mb-4">
+          Contact <span className="gradient-text">Me</span>
+        </h2>
+        <p className="text-slate-400 max-w-xl mx-auto text-base sm:text-lg px-2 sm:px-0">
+          Have a project in mind? I&apos;d love to hear about it. Send me a message and let&apos;s build something great.
+        </p>
+      </div>
 
-                <div className="grid md:grid-cols-[1fr_1.5fr] gap-8 items-start">
-                    {/* Left: Contact info */}
+      <div className="grid md:grid-cols-[1fr_1.5fr] gap-6 sm:gap-8 items-start">
+                    {/* Left: Magnetic contact links */}
                     <div ref={leftRef} className="flex flex-col gap-5" style={{ opacity: 0 }}>
-                        {contactLinks.map((link) => {
-                            const Icon = link.icon
-                            return (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    target={link.href.startsWith('http') ? '_blank' : undefined}
-                                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                    className="flex items-center gap-4 p-5 rounded-2xl gradient-border transition-all hover:scale-[1.02] group"
-                                >
-                                    <span
-                                        className="p-3 rounded-xl shrink-0 transition-all group-hover:scale-110"
-                                        style={{ background: link.bg, color: link.accent }}
-                                    >
-                                        <Icon size={20} />
-                                    </span>
-                                    <div>
-                                        <p className="text-xs text-slate-500 mb-0.5 uppercase tracking-widest font-mono">
-                                            {link.label}
-                                        </p>
-                                        <p className="text-slate-200 text-sm font-medium">{link.value}</p>
-                                    </div>
-                                    <FaArrowRight size={12} className="ml-auto text-slate-600 group-hover:text-slate-400 transition-colors" />
-                                </a>
-                            )
-                        })}
+                        {contactLinks.map((link) => (
+                            <MagneticLink key={link.label} {...link} />
+                        ))}
 
                         {/* Fun note */}
                         <div className="p-5 rounded-2xl glass mt-2">
                             <p className="text-xs font-mono text-slate-500 mb-2">// response time</p>
                             <p className="text-slate-300 text-sm">
-                                I typically reply within{' '}
-                                <span className="text-teal-400 font-semibold">24 hours</span>.
+                                I typically reply within
+                                <span className="gradient-text font-semibold">24 hours</span>.
                                 Looking forward to your message! 🚀
                             </p>
                         </div>
